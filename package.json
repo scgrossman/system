@@ -1,0 +1,60 @@
+{
+  "name": "rdmsystem",
+  "private": true,
+  "engines": {
+    "node": "^8.11.3",
+    "npm": ">=6"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build-storybook": "build-storybook",
+    "dev": "npm run storybook | node scripts/watch.js",
+    "lint:js": "eslint packages --ext '.js,.jsx' --config config/eslint.config.js --max-warnings 0 --fix",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest --config config/jest.config.js",
+    "test:u": "jest --u --config config/jest.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-info": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addon-storysource": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "autoprefixer": "^9.5.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.13.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "jest-enzyme": "^7.0.2",
+    "lerna": "^3.13.4",
+    "minimist": "^1.2.0",
+    "prettier": "^1.17.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rollup": "^1.11.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-postcss": "^2.0.3",
+    "sass": "^1.20.1",
+    "stylelint": "^10.0.1",
+    "stylelint-scss": "^3.6.1"
+  },
+  "dependencies": {
+    "@rdmsystem/box": "1.0.0",
+    "@rdmsystem/header": "1.0.0",
+    "@storybook/addon-a11y": "^5.0.11"
+  }
+}
