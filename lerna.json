@@ -1,4 +1,10 @@
 {
   "version": "independent",
-  "packages": ["packages/*"]
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "ignoreChanges": ["**/*.md", "**/*.spec.jsx", "**/*.snap"],
+      "message": "chore(publish): update packages"
+    }
+  }
 }
