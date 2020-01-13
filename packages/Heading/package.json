@@ -1,13 +1,15 @@
 {
   "name": "@snweb/heading",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A heading component",
   "main": "index.cjs.js",
   "module": "index.es.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "publishConfig":{"registry":"https://api.bintray.com/npm/rdm/sn-web"},
+  "publishConfig": {
+    "registry": "https://api.bintray.com/npm/rdm/sn-web"
+  },
   "repository": {
     "type": "git"
   },
