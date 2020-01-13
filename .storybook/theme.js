@@ -31,7 +31,7 @@ export default create({
 //   inputTextColor: 'black',
 //   inputBorderRadius: 4,
 
-  brandTitle: 'RDM System',
+  brandTitle: 'SN Component Library',
   //brandUrl: 'https://example.com',
   //brandImage: 'https://placehold.it/350x150',
 });

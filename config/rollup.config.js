@@ -15,8 +15,8 @@ export default opts => {
     opts
   )
 
-  const rdmExternals = Object.keys(options.dependencies).filter(dependency =>
-    dependency.startsWith('@rdm')
+  const snExternals = Object.keys(options.dependencies).filter(dependency =>
+    dependency.startsWith('@snweb')
   )
 
   return {
@@ -26,7 +26,7 @@ export default opts => {
       { format: 'es', file: './dist/index.es.js', sourcemap: false, exports: 'named' },
     ],
 
-    external: ['react', 'react-dom', 'prop-types'].concat(rdmExternals),
+    external: ['react', 'react-dom', 'prop-types'].concat(snExternals),
 
     plugins: [
       nodeResolve({
@@ -41,7 +41,7 @@ export default opts => {
           sourceMap: false,
           plugins: [autoprefixer()],
           modules: {
-            generateScopedName: 'RDM_[name]__[local]___[hash:base64:5]',
+            generateScopedName: 'SN_[name]__[local]___[hash:base64:5]',
           },
         }),
       babel({
