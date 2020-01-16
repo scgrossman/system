@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/scgrossman/system/compare/@snweb/heading@1.0.1...@snweb/heading@1.0.2) (2020-01-16)
+
+
+### Bug Fixes
+
+* **heading:** add classname ([55d7171](https://github.com/scgrossman/system/commit/55d7171))
+* **heading:** update color ([9a71d4b](https://github.com/scgrossman/system/commit/9a71d4b))
+
+
+
+
+
 ## 1.0.1 (2020-01-13)
 
 

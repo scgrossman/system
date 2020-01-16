@@ -4,5 +4,5 @@ import { withA11y } from '@storybook/addon-a11y';
 
 import Heading from '@snweb/heading';
 
-storiesOf('Heading', module).add('Heading component with text', () => <Heading>this is heading</Heading>);
+storiesOf('Heading', module).add('Heading component with text', () => <Heading>This is a standard heading</Heading>);
 
