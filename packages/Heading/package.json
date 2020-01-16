@@ -1,6 +1,6 @@
 {
   "name": "@snweb/heading",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A heading component",
   "main": "index.cjs.js",
   "module": "index.es.js",
