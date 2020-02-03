@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/scgrossman/system/compare/@snweb/heading@1.0.5...@snweb/heading@1.0.6) (2020-02-03)
+
+**Note:** Version bump only for package @snweb/heading
+
+
+
+
+
 ## [1.0.5](https://github.com/scgrossman/system/compare/@snweb/heading@1.0.4...@snweb/heading@1.0.5) (2020-02-03)
 
 
