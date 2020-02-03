@@ -57,7 +57,7 @@
     "stylelint-scss": "^3.6.1"
   },
   "dependencies": {
-    "@snweb/heading": "1.0.4",
+    "@snweb/heading": "1.0.5",
     "@storybook/addon-a11y": "^5.3.9"
   },
   "main": "babel.config.js",
