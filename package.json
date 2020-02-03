@@ -5,7 +5,9 @@
     "node": "^8.11.3",
     "npm": ">=6"
   },
-  "publishConfig":{"registry":"https://api.bintray.com/npm/rdm/sn-web"},
+  "publishConfig": {
+    "registry": "https://api.bintray.com/npm/rdm/sn-web"
+  },
   "scripts": {
     "build": "node scripts/build.js",
     "build-storybook": "build-storybook",
@@ -21,12 +23,12 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-info": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addon-storysource": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-info": "^5.3.9",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addon-storysource": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -55,8 +57,8 @@
     "stylelint-scss": "^3.6.1"
   },
   "dependencies": {
-    "@snweb/heading": "1",
-    "@storybook/addon-a11y": "^5.2.8"
+    "@snweb/heading": "1.0.4",
+    "@storybook/addon-a11y": "^5.3.9"
   },
   "main": "babel.config.js",
   "repository": {
