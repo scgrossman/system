@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/scgrossman/system/compare/@snweb/heading@1.0.7...@snweb/heading@1.0.8) (2020-02-06)
+
+
+### Bug Fixes
+
+* **heading:** incorrect colour ([ad9aeec](https://github.com/scgrossman/system/commit/ad9aeec))
+
+
+
+
+
 ## [1.0.7](https://github.com/scgrossman/system/compare/@snweb/heading@1.0.6...@snweb/heading@1.0.7) (2020-02-04)
 
 
