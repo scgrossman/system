@@ -13,7 +13,8 @@
     "build-storybook": "build-storybook",
     "dev": "npm run storybook | node scripts/watch.js",
     "lint:js": "eslint packages --ext '.js,.jsx' --config config/eslint.config.js --max-warnings 0 --fix",
-    "publish": "npx lerna publish --conventional-commits --yes --no-push",
+    "publish": "npx lerna publish --conventional-commits --yes --no",
+    "scaffold": "node scripts/scaffold.js",
     "storybook": "start-storybook -p 6006",
     "test": "jest --config config/jest.config.js",
     "test:u": "jest --u --config config/jest.config.js"
@@ -32,6 +33,7 @@
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "case": "^1.6.2",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "eslint": "^5.16.0",
@@ -42,6 +44,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
+    "kebab": "0.0.3",
     "lerna": "^3.13.4",
     "minimist": "^1.2.0",
     "prettier": "^1.17.0",
@@ -57,18 +60,18 @@
     "stylelint-scss": "^3.6.1"
   },
   "dependencies": {
-    "@snweb/heading": "1.0.7",
+    "@snweb/heading": "1.0.5",
     "@storybook/addon-a11y": "^5.3.9"
   },
   "main": "babel.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scgrossman/system.git"
+    "url": "git+https://github.com/digitalmedia/sn_web_components.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/scgrossman/system/issues"
+    "url": "https://github.com/digitalmedia/sn_web_components/issues"
   },
-  "homepage": "https://github.com/scgrossman/system#readme"
+  "homepage": "https://github.com/digitalmedia/sn_web_components#readme"
 }
