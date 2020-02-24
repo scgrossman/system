@@ -16,4 +16,3 @@
 - setup npm publish
 - eslint setup
 - command to scaphold new component
-
