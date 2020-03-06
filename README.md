@@ -58,5 +58,6 @@ becomes
 
     import TestComponent from '@snweb/TestComponent';
 
-Crete a PR to master, on merge to master ui.sportsnet.ca will be deployed.
+Also add it to to the root package.json as a dependency.
 
+Then Create a PR to master, on merge to master ui.sportsnet.ca will be deployed.
