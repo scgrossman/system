@@ -26,8 +26,37 @@ https://ui.sportsnet.ca
 
 1. `npm run scaffold YourComponentName`
 
-This will create a component in the packages directory with your specified Component name and will also create a story for the component in the stories directory.
+This will create a component in the packages directory using the provided name and will also create a story for the component in the stories directory.
+
+2. Then run `npm run dev` to view the newly created component
 
 &nbsp;
 
-# Deploy
+# Deploy Package
+
+Commit code using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#specification)
+
+examples:
+
+Feature commit message:
+
+    feat(Header): add header component
+
+Fix commit message:
+
+    fix(Headder): hover colour
+
+Once code has been commited run `npm run publish` this create the components changelog, updates the components version and then publishes to sn-web scoped packages on bintray. https://bintray.com/rdm/sn-web
+
+# Deploy to ui.sportsnet.ca
+
+If you've created a new package you will need to update the reference from the relative filepath in the components stories.js file to the published package
+
+    import TestComponent from "../packages/TestComponent";
+
+becomes
+
+    import TestComponent from '@snweb/TestComponent';
+
+Crete a PR to master, on merge to master ui.sportsnet.ca will be deployed.
+
