@@ -1,0 +1,25 @@
+{
+  "name": "@snweb/test-component",
+  "version": "1.0.0-0",
+  "description": "",
+  "main": "index.cjs.js",
+  "module": "index.es.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/digitalmedia/sn_web_components.git"
+  },
+  "publishConfig": {
+      "registry": "https://api.bintray.com/npm/rdm/sn-web"
+  },
+  "author": "SN Web Team",
+  "bugs": {
+    "url": "https://github.com/digitalmedia/sn_web_components/issues"
+  },
+  "homepage": "https://ui.sportsnet.ca",
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  }
+}

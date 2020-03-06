@@ -1,18 +1,33 @@
 # SN Web Component Library
 
-1. `npm install` (since our components are not stored anywhere, `@snweb/box` and `@snweb/header` will fail)
+SN Web Component library was created to serve as a centralized place where our respective environments can pull from to acheive consistency across enviroments.
 
-2. cd into `node_modules` and run `npm link @sn/box` and `npm link @snweb/header` (creates symlink to local components)
+Components are built using [ReactJS](https://reactjs.org/) and compiled using [rollup.js](https://rollupjs.org/guide/en/).
 
-3. start storybook and watch components for live-reloading `npm run dev`
+We use [Storybook](https://storybook.js.org/) as a way to self document our component library.
 
-4. to commit a change, follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) guideline. example `feat(Box): update hover colour` or `fix(Box): fix prop type` etc.
+https://ui.sportsnet.ca
 
-5. to generate changelog, version bump and tag run `npm run pre-publish`
+&nbsp;
 
+# Setup local environment
 
-### Todo:
+1. git clone git@github.com:digitalmedia/sn_web_components.git
 
-- setup npm publish
-- eslint setup
-- command to scaphold new component
+2. In order to pull `@snweb` scoped packages you will need to [setup bintray](https://www.jfrog.com/confluence/display/BT/npm+Repositories) if you don't have a bintray account please contact simon.grossman@rci.rogers.com
+
+3. If you have bintray properly setup you should be able to run `npm install` and all dependencies should resolve.
+
+4. Start local developement enviroment by runnning `npm run dev` which will start a local storybook enviroment with live reload.
+
+&nbsp;
+
+# Create Component
+
+1. `npm run scaffold YourComponentName`
+
+This will create a component in the packages directory with your specified Component name and will also create a story for the component in the stories directory.
+
+&nbsp;
+
+# Deploy
