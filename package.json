@@ -61,7 +61,6 @@
   },
   "dependencies": {
     "@snweb/heading": "1.0.5",
-    "@snweb/test-component": "1.0.0",
     "@storybook/addon-a11y": "^5.3.9"
   },
   "main": "babel.config.js",
