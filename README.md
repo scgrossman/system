@@ -1,19 +1,63 @@
 # SN Web Component Library
 
-1. `npm install` (since our components are not stored anywhere, `@snweb/box` and `@snweb/header` will fail)
+SN Web Component library was created to serve as a centralized place where our respective environments can pull from to acheive consistency across enviroments.
 
-2. cd into `node_modules` and run `npm link @sn/box` and `npm link @snweb/header` (creates symlink to local components)
+Components are built using [ReactJS](https://reactjs.org/) and compiled using [rollup.js](https://rollupjs.org/guide/en/).
 
-3. start storybook and watch components for live-reloading `npm run dev`
+We use [Storybook](https://storybook.js.org/) as a way to self document our component library.
 
-4. to commit a change, follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) guideline. example `feat(Box): update hover colour` or `fix(Box): fix prop type` etc.
+https://ui.sportsnet.ca
 
-5. to generate changelog, version bump and tag run `npm run pre-publish`
+&nbsp;
 
+# Setup local environment
 
-### Todo:
+1. git clone git@github.com:digitalmedia/sn_web_components.git
 
-- setup npm publish
-- eslint setup
-- command to scaphold new component
+2. In order to pull `@snweb` scoped packages you will need to [setup bintray](https://www.jfrog.com/confluence/display/BT/npm+Repositories) if you don't have a bintray account please contact simon.grossman@rci.rogers.com
 
+3. If you have bintray properly setup you should be able to run `npm install` and all dependencies should resolve.
+
+4. Start local developement enviroment by runnning `npm run dev` which will start a local storybook enviroment with live reload.
+
+&nbsp;
+
+# Create Component
+
+1. `npm run scaffold YourComponentName`
+
+This will create a component in the packages directory using the provided name and will also create a story for the component in the stories directory.
+
+2. Then run `npm run dev` to view the newly created component
+
+&nbsp;
+
+# Deploy Package
+
+Commit code using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#specification)
+
+examples:
+
+Feature commit message:
+
+    feat(Header): add header component
+
+Fix commit message:
+
+    fix(Headder): hover colour
+
+Once code has been commited run `npm run publish` this create the components changelog, updates the components version and then publishes to sn-web scoped packages on bintray. https://bintray.com/rdm/sn-web
+
+# Deploy to ui.sportsnet.ca
+
+If you've created a new package you will need to update the reference from the relative filepath in the components stories.js file to the published package
+
+    import TestComponent from "../packages/TestComponent";
+
+becomes
+
+    import TestComponent from '@snweb/TestComponent';
+
+Also add it to to the root package.json as a dependency.
+
+Then Create a PR to master, on merge to master ui.sportsnet.ca will be deployed.
