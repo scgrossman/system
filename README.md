@@ -18,7 +18,7 @@ https://ui.sportsnet.ca
 
 3. If you have bintray properly setup you should be able to run `npm install` and all dependencies should resolve.
 
-4. Start local developement enviroment by runnning `npm run dev` which will start a local storybook enviroment with live reload.
+4. Start local developement enviroment by runnning `npm run dev` which will start a local storybook enviroment with live reload. 
 
 &nbsp;
 
