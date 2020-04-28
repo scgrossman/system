@@ -26,7 +26,7 @@ export default opts => {
       { format: 'es', file: './dist/index.es.js', sourcemap: false, exports: 'named' },
     ],
 
-    external: ['react', 'react-dom', 'prop-types'].concat(snExternals),
+    external: ['react', 'react-dom', 'react-router', 'prop-types'].concat(snExternals),
 
     plugins: [
       nodeResolve({

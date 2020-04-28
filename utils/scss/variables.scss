@@ -1,0 +1,41 @@
+@import './mixins.scss';
+
+$screen-xs: 360px;
+$screen-sm: 768px;	
+$screen-xs-max: ($screen-sm - 1) !default;	
+$screen-md: 992px;	
+$screen-lg: 1200px;	
+$screen-xlg: 1400px;	
+
+$col-width-sm: 768px;
+
+$helvetica: 'Helvetica', 'Arial', sans-serif;
+$din: 'urw-din', Helvetica, Arial, sans-serif;
+$din-cond: 'urw-din-condensed', Helvetica, Arial, sans-serif;
+$pt-serif: 'pt-serif', serif;
+
+$sn-blue: #156bac;
+
+$light-sn-navyblue: #003279;
+$medium-sn-navyblue: #005eb8;
+$dark-sn-navyblue: #0d243c;
+
+$dark-sn-blue: #0f69ae;
+$light-sn-blue: #3b94d9;
+
+$light-sn-grey: #d4d4d4;
+$border-sn-grey: #cecece;
+$medium-sn-grey: #949ba2;
+$dark-sn-grey: #8a9299;
+$darker-sn-grey: #636a71;
+
+$dark-sn-red: #c81f2f;
+$light-sn-red: #ff002a;
+
+$app-bg: #f0f3f6;
+$odd-cell-bg: #f7f4f4;
+$black-text: #2b2b2b;
+
+$border-radius-all: rem(4);
+$border-radius-top: rem(4) rem(4) 0 0;
+$border-radius-bottom: 0 0 rem(4) rem(4);
