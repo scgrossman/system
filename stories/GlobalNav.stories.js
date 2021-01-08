@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { storiesOf } from '@storybook/react';
 
-//import GlobalNav from '@snweb/global-nav';
+//import GlobalNav from '@digitalmedia/global-nav';
 import GlobalNav from "../packages/GlobalNav";
 
 storiesOf('Navigation', module).add('Global Navigation', () => {

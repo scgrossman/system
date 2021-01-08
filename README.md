@@ -14,7 +14,7 @@ https://ui.sportsnet.ca
 
 1. git clone git@github.com:digitalmedia/sn_web_components.git
 
-2. In order to pull `@snweb` scoped packages you will need to [setup bintray](https://www.jfrog.com/confluence/display/BT/npm+Repositories) if you don't have a bintray account please contact simon.grossman@rci.rogers.com
+2. In order to pull `@digitalmedia` scoped packages you will need to [setup bintray](https://www.jfrog.com/confluence/display/BT/npm+Repositories) if you don't have a bintray account please contact simon.grossman@rci.rogers.com
 
 3. If you have bintray properly setup you should be able to run `npm install` and all dependencies should resolve.
 
@@ -56,7 +56,7 @@ If you've created a new package you will need to update the reference from the r
 
 becomes
 
-    import TestComponent from '@snweb/TestComponent';
+    import TestComponent from '@digitalmedia/TestComponent';
 
 Also add it to to the root package.json as a dependency.
 
