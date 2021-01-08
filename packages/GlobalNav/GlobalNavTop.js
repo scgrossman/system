@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
-import { sn_url } from '../../utils/js/endpoints'
 import { decodeEntities, removeDomain } from '../../utils/js/shared_helpers'
-import LinkComponent from '../../utils/components/LinkComponent'
+import LinkComponent from './LinkComponent'
 
-import styles from './GlobalNav.scss';
+import styles from './GlobalNav.module.scss';
 
 class GlobalNavTop extends PureComponent {
     state = {
@@ -64,47 +63,39 @@ class GlobalNavTop extends PureComponent {
             modalMenuClose,
             modalMenuToggle,
             getReactWpUrl,
+            withNavProps
         } = this.props
 
         return (
-            <div className={styles.active}>
-                <div className="top_nav_bar">
-                    <button className={`burger ${menu_collapsed_class}`}>
-                        <div className="burger_cont" onClick={navMenuToggle}>
-                            <div className={`top ${menu_collapsed_class}`} />
-                            <div className={`middle ${menu_collapsed_class}`} />
-                            <div className={`bottom ${menu_collapsed_class}`} />
+            <div className={`${styles.NavigationTop__cont} ${styles.loaded_nav} ${isLivetracker_class} ${isBasic_class} is_sticky`} id="nav-sticky">
+                <div className={styles.top_nav_bar}>
+                    <button className={`${styles.burger} ${menu_collapsed_class}`}>
+                        <div className={styles.burger_cont} onClick={navMenuToggle}>
+                            <div className={`${styles.top} ${menu_collapsed_class}`} />
+                            <div className={`${styles.middle} ${menu_collapsed_class}`} />
+                            <div className={`${styles.bottom} ${menu_collapsed_class}`} />
                         </div>
                     </button>
 
                     <a href="https://www.sportsnet.ca">
                         <img
-                            className="sn_logo_nav_mobile"
+                            className={styles.sn_logo_nav_mobile}
                             src="https://www.sportsnet.ca/wp-content/themes/sportsnet-nhl/images/logo-sn.svg"
                             alt="Sportsnet Logo"
                             title="Sportsnet"
                         />
                     </a>
 
-                    <a href="https://www.sportsnet.ca">
-                        <img
-                            className="sn_logo_nav_desktop"
-                            src="https://www.sportsnet.ca/wp-content/themes/sportsnet-nhl/images/logo-sportsnet.svg"
-                            alt="Sportsnet Logo"
-                            title="Sportsnet"
-                        />
-                    </a>
+                    <div className={styles.livetracker_text}>Live Tracker</div>
 
-                    <div className="livetracker_text">Live Tracker</div>
-
-                    <div className="video_text">
+                    <div className={styles.video_text}>
                         <a href="https://www.sportsnet.ca/videos/">Video</a>
                     </div>
 
-                    <div id="sponsor_00" className="sn-sponsor-ad" />
+                    <div id="sponsor_00" className={styles.snSponsorAd} />
 
-                    <div className="desktop_nav">
-                        <ul className="desktop_nav_link_list">
+                    <div className={styles.desktop_nav}>
+                        <ul className={styles.desktop_nav_link_list}>
                             {Object.keys(nav).length !== 0 &&
                                 nav.left.map(left_item => {
                                     const url_formatted =
@@ -117,13 +108,13 @@ class GlobalNavTop extends PureComponent {
 
                                     return (
                                         <li
-                                            className={`desktop_nav_link_item ${
-                                                isOpenSubMenu ? 'open_submenu' : ''
+                                            className={`${styles.desktop_nav_link_item} ${
+                                                isOpenSubMenu ? styles.open_submenu : ''
                                             }`}
                                             key={left_item.ID}
                                         >
                                             <div
-                                                className="desktop_nav_link_item_link"
+                                                className={styles.desktop_nav_link_item_link}
                                                 onClick={() =>
                                                     this.desktopNavLinkNavigation(
                                                         url_formatted,
@@ -140,7 +131,7 @@ class GlobalNavTop extends PureComponent {
                                             {hasChildMenu && (
                                                 <ul
                                                     id={`desktop_nav_link_menu_${left_item.ID}`}
-                                                    className="desktop_nav_link_menu"
+                                                    className={styles.desktop_nav_link_menu}
                                                 >
                                                     {left_item.child_menu.map(left_child_item => {
                                                         const url_formatted_child =
@@ -166,29 +157,29 @@ class GlobalNavTop extends PureComponent {
 
                                                         return (
                                                             <li
-                                                                className="desktop_nav_link_menu_item"
+                                                                className={styles.desktop_nav_link_menu_item}
                                                                 key={left_child_item.ID}
                                                             >
                                                                 {!modalType && (
                                                                     <LinkComponent
-                                                                        className="desktop_nav_link_menu_item_link"
+                                                                        className={styles.desktop_nav_link_menu_item_link}
+                                                                        withNavProps={withNavProps}
                                                                         url={proper_url}
+                                                                        singlePageNavigation={doReactPage}
+                                                                        isNavLink
                                                                         onClick={() => {
                                                                             if (doReactPage) {
                                                                                 modalMenuClose()
                                                                                 this.closeDesktopNavLinkNavigation()
                                                                             }
                                                                         }}
-                                                                        singlePageNavigation={
-                                                                            doReactPage
-                                                                        }
                                                                     >
                                                                         {left_child_item.title}
                                                                     </LinkComponent>
                                                                 )}
                                                                 {modalType && (
                                                                     <div
-                                                                        className="desktop_nav_link_menu_item_link"
+                                                                        className={styles.desktop_nav_link_menu_item_link}
                                                                         onClick={() => {
                                                                             modalMenuToggle(
                                                                                 modalType,
@@ -210,7 +201,7 @@ class GlobalNavTop extends PureComponent {
                                 })}
                         </ul>
 
-                        <ul className="desktop_nav_link_list">
+                        <ul className={styles.desktop_nav_link_list}>
                             {Object.keys(nav).length !== 0 &&
                                 nav.right.map(right_item => {
                                     if (right_item.title === 'Watch Live') return ''
@@ -230,13 +221,13 @@ class GlobalNavTop extends PureComponent {
 
                                     return (
                                         <li
-                                            className={`desktop_nav_link_item right ${remove_at_tablet_class} ${
+                                            className={`${styles.desktop_nav_link_item} ${styles.right} ${remove_at_tablet_class} ${
                                                 isOpenSubMenu ? 'open_submenu' : ''
                                             }`}
                                             key={right_item.ID}
                                         >
                                             <div
-                                                className="desktop_nav_link_item_link"
+                                                className={styles.desktop_nav_link_item_link}
                                                 onClick={() =>
                                                     this.desktopNavLinkNavigation(
                                                         url_formatted,
@@ -248,7 +239,7 @@ class GlobalNavTop extends PureComponent {
                                                 {title}
                                             </div>
                                             {hasChildMenu && (
-                                                <ul className="desktop_nav_link_menu">
+                                                <ul className={styles.desktop_nav_link_menu}>
                                                     {right_item.child_menu.map(right_child_item => {
                                                         const url_formatted_child =
                                                             right_child_item.url &&
@@ -263,21 +254,21 @@ class GlobalNavTop extends PureComponent {
 
                                                         return (
                                                             <li
-                                                                className="desktop_nav_link_menu_item"
+                                                                className={styles.desktop_nav_link_menu_item}
                                                                 key={right_child_item.ID}
                                                             >
                                                                 <LinkComponent
-                                                                    className="desktop_nav_link_menu_item_link"
+                                                                    className={styles.desktop_nav_link_menu_item_link}
                                                                     url={proper_url}
+                                                                    withNavProps={withNavProps}
+                                                                    singlePageNavigation={doReactPage}
+                                                                    isNavLink
                                                                     onClick={() => {
                                                                         if (doReactPage) {
                                                                             modalMenuClose()
                                                                             this.closeDesktopNavLinkNavigation()
                                                                         }
                                                                     }}
-                                                                    singlePageNavigation={
-                                                                        doReactPage
-                                                                    }
                                                                 >
                                                                     {right_child_item.title}
                                                                 </LinkComponent>
@@ -289,18 +280,18 @@ class GlobalNavTop extends PureComponent {
                                         </li>
                                     )
                                 })}
-                            <li className="desktop_nav_link_item">
-                                <div className="desktop_nav_link_item_link">
+                            <li className={styles.desktop_nav_link_item}>
+                                <div className={styles.desktop_nav_link_item_link}>
                                     <div className="global-nav-search">
                                         <svg className="search-icon light">
                                             <use
-                                                href={`${sn_url}/wp-content/themes/sportsnet-nhl/images/combined-icons.svg#search`}
+                                                href={`${process.env.SN_URL}/wp-content/themes/sportsnet-nhl/images/combined-icons.svg#search`}
                                             />
                                         </svg>
                                     </div>
                                 </div>
                             </li>
-                            <li className="desktop_nav_link_item">
+                            <li className={styles.desktop_nav_link_item}>
                                 <div
                                     id="ump-user-account-links"
                                     className="ump-user-account-links mobile-signin-register pull-right hidden-xs"
@@ -331,7 +322,7 @@ class GlobalNavTop extends PureComponent {
                                                     >
                                                         <div
                                                             className="profile-avatar-wrapper"
-                                                            style={{ border: 'none' }}
+                                                            style={{ border: 'none', background: '#ccc', width: '24px', height: '24px', borderRadius: '100%' }}
                                                         >
                                                             {/*eslint-disable-next-line*/}
                                                             <img
@@ -347,7 +338,7 @@ class GlobalNavTop extends PureComponent {
                                                 <ul className="dropdown-menu">
                                                     <li className="dropdown-no-children">
                                                         <a
-                                                            href="https://www.sportsnet.ca/edit-profile/"
+                                                            href="https://int-www.sportsnet.ca/edit-profile/"
                                                             className="ump-submenu-item text-lightblue"
                                                             id="captureProfileLink"
                                                         >
@@ -372,9 +363,9 @@ class GlobalNavTop extends PureComponent {
                                     <p className="login-failed-note" style={{ display: 'none' }} />
                                 </div>
                             </li>
-                            <li className="desktop_nav_link_item watch_live">
+                            <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
                                 <a href="https://now.sportsnet.ca/">
-                                    <div className="desktop_nav_link_item_link">Watch Live</div>
+                                    <div className={styles.desktop_nav_link_item_link}>Watch Live</div>
                                 </a>
                             </li>
                         </ul>

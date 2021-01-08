@@ -5,7 +5,7 @@
     "publish": {
       "ignoreChanges": ["**/*.md", "**/*.spec.jsx", "**/*.snap"],
       "message": "chore(publish): update packages",
-      "registry": "https://api.bintray.com/npm/rdm/sn-web"
+      "registry": "https://npm.pkg.github.com/orgs/digitalmedia"
     }
   }
 }

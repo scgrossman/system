@@ -1,5 +1,5 @@
 {
-  "name": "@snweb/global-nav",
+  "name": "@digtalmedia/sn-global-nav",
   "version": "1.0.0",
   "description": "",
   "main": "index.cjs.js",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/digitalmedia/sn_web_components.git"
   },
   "publishConfig": {
-    "registry": "https://api.bintray.com/npm/rdm/sn-web"
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "SN Web Team",
   "bugs": {

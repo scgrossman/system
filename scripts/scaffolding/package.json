@@ -12,7 +12,7 @@
       "url": "git+https://github.com/digitalmedia/sn_web_components.git"
   },
   "publishConfig": {
-      "registry": "https://api.bintray.com/npm/rdm/sn-web"
+      "registry": "https://npm.pkg.github.com/orgs/digitalmedia"
   },
   "author": "SN Web Team",
   "bugs": {

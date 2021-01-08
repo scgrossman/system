@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Heading from '@snweb/heading';
+//import Heading from "../packages/Heading";
 
 storiesOf('Headings', module).add('Article Headings', () => {
     return (

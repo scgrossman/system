@@ -1,1 +1,1 @@
-# SN Web: GlobalNav
+# SN Global Nav: GlobalNav Redesign WIP

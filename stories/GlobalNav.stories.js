@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 //import GlobalNav from '@snweb/global-nav';
 import GlobalNav from "../packages/GlobalNav";
 
-storiesOf('GlobalNav', module).add('Component', () => {
+storiesOf('Navigation', module).add('Global Navigation', () => {
     return (
         <div>
             <link rel="stylesheet" type="text/css" media="all" href="https://int-www.sportsnet.ca/wp-content/themes/sportsnet-nhl/global.css"/>
