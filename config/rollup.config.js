@@ -16,7 +16,7 @@ export default opts => {
   )
 
   const snExternals = Object.keys(options.dependencies).filter(dependency =>
-    dependency.startsWith('@snweb')
+    dependency.startsWith('@digitalmedia')
   )
 
   return {
