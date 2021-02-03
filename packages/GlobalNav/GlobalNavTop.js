@@ -280,6 +280,11 @@ class GlobalNavTop extends PureComponent {
                                         </li>
                                     )
                                 })}
+                            <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
+                                <a href="https://now.sportsnet.ca/">
+                                    <div className={styles.desktop_nav_link_item_link}>LIVE</div>
+                                </a>
+                            </li>
                             <li className={styles.desktop_nav_link_item}>
                                 <div className={styles.desktop_nav_link_item_link}>
                                     <div className="global-nav-search">
@@ -299,6 +304,7 @@ class GlobalNavTop extends PureComponent {
                                 <div
                                     id="ump-user-account-links"
                                     className="ump-user-account-links mobile-signin-register pull-right hidden-xs"
+                                    style={{top:'auto',right:'auto'}}
                                 >
                                     <button
                                         id="captureSignInLink"
@@ -368,11 +374,6 @@ class GlobalNavTop extends PureComponent {
 
                                     <p className="login-failed-note" style={{ display: 'none' }} />
                                 </div>
-                            </li>
-                            <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
-                                <a href="https://now.sportsnet.ca/">
-                                    <div className={styles.desktop_nav_link_item_link}>LIVE</div>
-                                </a>
                             </li>
                         </ul>
                     </div>
