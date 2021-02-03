@@ -167,6 +167,10 @@ $desktopBreak: 1280px;
                     list-style: none;
                     padding: 0 12px;
                     position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 72px;
 
                     &.right {
                         padding: 0 8px;
@@ -209,6 +213,7 @@ $desktopBreak: 1280px;
                         border-radius: 4px;
                         padding: 5px 10px 5px 26px;
                         font-size: 12px;
+                        height: 32px;
 
                         @media (min-width: $tabletLandscapeBreak) {
                             font-size: 14px;
@@ -243,29 +248,30 @@ $desktopBreak: 1280px;
                     .desktop_nav_link_menu {
                         display: none;
                         position: absolute;
-                        top: 20px;
+                        top: 100%;
                         left: -5px;
                         min-width: 190px;
-                        padding: 20px 0 10px 0;
-                        background-color: #0d243c;
+                        padding: 18px 36px;
+                        background-color: #FFFFFF;
                         margin: 0;
-                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);
 
                         .desktop_nav_link_menu_item {
-                            color: white;
-                            padding: 5px 15px;
+                            color: #000000;
+                            padding: 18px 0;
                             list-style: none;
-                            line-height: 18px;
+                            font-size: 16px;
+                            line-height: 16px;
                             cursor: pointer;
                             transition: background-color 0.2s;
                             background-color: transparent;
 
                             &:hover {
-                                background-color: #2b3d57;
+                                //background-color: #2b3d57;
                             }
 
-                            .desktop_nav_link_menu_item_link {
-                                color: white;
+                            a {
+                                color: #000000;
                                 text-decoration: none;
                                 height: 100%;
                                 width: 100%;

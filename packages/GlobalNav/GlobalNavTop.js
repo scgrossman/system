@@ -283,10 +283,14 @@ class GlobalNavTop extends PureComponent {
                             <li className={styles.desktop_nav_link_item}>
                                 <div className={styles.desktop_nav_link_item_link}>
                                     <div className="global-nav-search">
-                                        <svg className="search-icon light">
-                                            <use
-                                                href={`${process.env.SN_URL}/wp-content/themes/sportsnet-nhl/images/combined-icons.svg#search`}
-                                            />
+                                        <svg className="search-icon light" xmlns="http://www.w3.org/2000/svg" viewBox="10 10 22 22">
+                                            <path class="a" d="M0 0h48v48H0z" style={{fill:'none'}}/>
+                                            <path class="a" d="M12 12h24v24H12z" style={{fill:'none'}}/>
+                                            <g class="b" transform="translate(13 13)" style={{fill:'none',stroke:'#fff'}}>
+                                                <circle cx="8" cy="8" r="8"/>
+                                                <circle class="a" cx="8" cy="8" r="7" style={{fill:'none'}}/>
+                                            </g>
+                                            <path class="b" d="M26 26l8 8" style={{fill:'none',stroke:'#fff'}}/>
                                         </svg>
                                     </div>
                                 </div>
@@ -299,9 +303,11 @@ class GlobalNavTop extends PureComponent {
                                     <button
                                         id="captureSignInLink"
                                         className="captureSignInLink capture_modal_open"
-                                        style={{ display: 'none' }}
+                                        style={{ display: 'block' }}
                                     >
-                                        Sign In
+                                        <div className="janrainProfileIcon" style={{width:'50px',height:'50px'}}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{fill:'none'}}> <defs> <clipPath id="a"> <circle class="a" cx="12" cy="12" r="12" transform="translate(-1854 840)" style={{fill:'none'}}/> </clipPath> </defs> <g transform="translate(1866 -828)" clip-path="url(#a)"> <g class="c" transform="translate(-1854 855)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1847 844)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="5" cy="5" r="5" style={{stroke:'none'}}/> <circle class="a" cx="5" cy="5" r="4.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1854 840)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> </g> <path class="a" d="M0 0h48v48H0z"/> </svg>
+                                        </div>
                                     </button>
 
                                     <div className="captureSubWrapper">
@@ -365,7 +371,7 @@ class GlobalNavTop extends PureComponent {
                             </li>
                             <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
                                 <a href="https://now.sportsnet.ca/">
-                                    <div className={styles.desktop_nav_link_item_link}>Watch Live</div>
+                                    <div className={styles.desktop_nav_link_item_link}>LIVE</div>
                                 </a>
                             </li>
                         </ul>
