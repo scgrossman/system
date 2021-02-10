@@ -88,9 +88,9 @@ class GlobalNavTop extends PureComponent {
 
                     <div className={styles.livetracker_text}>Live Tracker</div>
 
-                    <div className={styles.video_text}>
+                    {/* <div className={styles.video_text}>
                         <a href="https://www.sportsnet.ca/videos/">Video</a>
-                    </div>
+                    </div> */}
 
                     <div id="sponsor_00" className={styles.snSponsorAd} />
 
@@ -285,7 +285,7 @@ class GlobalNavTop extends PureComponent {
                                     <div className={styles.desktop_nav_link_item_link}>LIVE</div>
                                 </a>
                             </li>
-                            <li className={styles.desktop_nav_link_item}>
+                            <li className={`${styles.desktop_nav_link_item} ${styles.search_btn}`}>
                                 <div className={styles.desktop_nav_link_item_link}>
                                     <div className="global-nav-search">
                                         <svg className="search-icon light" xmlns="http://www.w3.org/2000/svg" viewBox="10 10 22 22">
@@ -300,7 +300,7 @@ class GlobalNavTop extends PureComponent {
                                     </div>
                                 </div>
                             </li>
-                            <li className={styles.desktop_nav_link_item}>
+                            <li className={`${styles.desktop_nav_link_item} ${styles.janrain_btn}`}>
                                 <div
                                     id="ump-user-account-links"
                                     className="ump-user-account-links mobile-signin-register pull-right hidden-xs"
@@ -311,7 +311,7 @@ class GlobalNavTop extends PureComponent {
                                         className="captureSignInLink capture_modal_open"
                                         style={{ display: 'block' }}
                                     >
-                                        <div className="janrainProfileIcon" style={{width:'50px',height:'50px'}}>
+                                        <div className={styles.janrain_profile_icon}>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{fill:'none'}}> <defs> <clipPath id="a"> <circle class="a" cx="12" cy="12" r="12" transform="translate(-1854 840)" style={{fill:'none'}}/> </clipPath> </defs> <g transform="translate(1866 -828)" clip-path="url(#a)"> <g class="c" transform="translate(-1854 855)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1847 844)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="5" cy="5" r="5" style={{stroke:'none'}}/> <circle class="a" cx="5" cy="5" r="4.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1854 840)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> </g> <path class="a" d="M0 0h48v48H0z"/> </svg>
                                         </div>
                                     </button>
@@ -333,8 +333,7 @@ class GlobalNavTop extends PureComponent {
                                                         style={{ display: 'none' }}
                                                     >
                                                         <div
-                                                            className="profile-avatar-wrapper"
-                                                            style={{ border: 'none', background: '#ccc', width: '24px', height: '24px', borderRadius: '100%' }}
+                                                            className={styles.profile_avatar_wrapper}
                                                         >
                                                             {/*eslint-disable-next-line*/}
                                                             <img

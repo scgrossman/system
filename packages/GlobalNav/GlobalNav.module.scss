@@ -24,7 +24,7 @@ $desktopBreak: 1280px;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    //background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.15s, z-index 0s 0.15s;
@@ -135,9 +135,11 @@ $desktopBreak: 1280px;
         .sn_logo_nav_mobile {
             width: 50px;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 16px;
+            left: 16px;
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
 
             @media (min-width: $tabletPortraitBreak) {
                 position: relative;
@@ -210,10 +212,11 @@ $desktopBreak: 1280px;
 
                     &.watch_live {
                         border: 1px solid #cccccc;
-                        border-radius: 4px;
-                        padding: 5px 10px 5px 26px;
+                        border-radius: 2px;
+                        padding: 5px 12px 5px 22px;
                         font-size: 12px;
                         height: 32px;
+                        margin-right: 24px;
 
                         @media (min-width: $tabletLandscapeBreak) {
                             font-size: 14px;
@@ -225,8 +228,8 @@ $desktopBreak: 1280px;
                             top: 50%;
                             left: 10px;
                             transform: translate(0, -50%);
-                            width: 10px;
-                            height: 10px;
+                            width: 5px;
+                            height: 5px;
                             border-radius: 50%;
                             background-color: #ff2020;
                             animation: watchLiveAni 1.8s infinite linear;
@@ -320,6 +323,30 @@ $desktopBreak: 1280px;
                             }
                         }
                     }
+
+                    &.search_btn {
+                        width: 48px;
+                        padding: 0;
+                        margin-right: 8px;
+                    }
+
+                    &.janrain_btn {
+                        width: 48px;
+                        padding: 0;
+                    }
+
+                    .janrain_profile_icon {
+                        width: 50px;
+                        height: 50px;
+                    }
+
+                    .profile_avatar_wrapper {
+                        border: 'none';
+                        background: '#ccc';
+                        width: '24px';
+                        height: '24px';
+                        border-radius: '100%';
+                    }
                 }
             }
         }
@@ -327,7 +354,7 @@ $desktopBreak: 1280px;
         .burger {
             position: absolute;
             top: 0;
-            left: 0;
+            right: 4px;
             padding: 12px;
             display: flex;
             align-items: center;
@@ -672,11 +699,12 @@ $desktopBreak: 1280px;
     top: 50px;
     left: 0;
     bottom: 0;
-    width: 60%;
+    width: 100%;
+    padding: 0 16px;
     overflow-y: scroll;
-    background-color: #162d45;
-    transform: translate3d(-101%, 0, 0);
-    transition: transform 0.15s cubic-bezier(0.62, 0.28, 0.23, 0.99), opacity 0.25s;
+    background-color: #FFFFFF;
+    //transform: translate3d(-101%, 0, 0);
+    //transition: transform 0.15s cubic-bezier(0.62, 0.28, 0.23, 0.99), opacity 0.25s;
     opacity: 0;
 
     @media (min-width: $tabletPortraitBreak) {
@@ -684,18 +712,56 @@ $desktopBreak: 1280px;
     }
 
     &.open_nav {
-        transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
         opacity: 1;
+        animation: fadeIn ease 0.2s;
+        -webkit-animation: fadeIn ease 0.2s;
+        -moz-animation: fadeIn ease 0.2s;
+        -o-animation: fadeIn ease 0.2s;
+        -ms-animation: fadeIn ease 0.2s;
+    }
+
+    .fade-in {
+        animation: fadeIn ease 20s;
+        -webkit-animation: fadeIn ease 20s;
+        -moz-animation: fadeIn ease 20s;
+        -o-animation: fadeIn ease 20s;
+        -ms-animation: fadeIn ease 20s;
+    }
+    @keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    @-o-keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
     }
 
     .mobile_menu_search {
         display: flex;
         align-items: center;
         padding: 10px 20px;
-        color: white;
+        color: #0B223E;
         font-size: 18px;
         font-weight: 700;
-        border-bottom: 1px solid #005eb8;
+        border-bottom: 1px solid #CECECE;
+        margin-bottom: 24px;
 
         button {
             background-color: transparent;
@@ -708,17 +774,25 @@ $desktopBreak: 1280px;
     .mobile_nav_link_list {
         padding: 0 0 20px 0;
         margin: 0;
-        background-color: #162d45;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
         .mobile_nav_link_list_item {
             font-size: 18px;
             list-style: none;
-            border-top: 1px solid #3d4f6a;
-            background-color: #0d243c;
+            border: 1px solid #E3E3E3;
+            box-shadow: 0px 1px 4px #0000001A;
+            border-radius: 4px;
+            background-color: #FFFFFF;
             position: relative;
+            flex: 0 31%;
+            height: 100px;
+            margin-bottom: 3.5%;
 
             &:last-child {
-                border-bottom: 1px solid #3d4f6a;
+                //border-bottom: 1px solid #3d4f6a;
             }
 
             &.more a {
@@ -732,7 +806,7 @@ $desktopBreak: 1280px;
             a,
             button,
             div {
-                color: white;
+                color: #0B223E;
                 font-weight: 700;
                 text-decoration: none;
                 display: inline-block;
