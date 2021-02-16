@@ -78,8 +78,10 @@ class GlobalNavMobile extends PureComponent {
                                     </li>
                                     {mobile_more_menu_open &&
                                         isMore &&
-                                        left_item.child_menu.length !== 0 &&
-                                        left_item.child_menu.map(more_child_item => {
+                                        left_item.child_menu.length !== 0 && (
+                                            <div className={`${styles.mobile_nav_secondary_list}`}>
+                                                <div className={`${styles.mobile_nav_secondary_back} ${styles.Navigation_chevron}`} onClick={this.toggleMobileMoreMenu}>Back</div>
+                                                {left_item.child_menu.map(more_child_item => {
                                             const url_formatted =
                                                 more_child_item.url &&
                                                 removeDomain(more_child_item.url)
@@ -111,6 +113,9 @@ class GlobalNavMobile extends PureComponent {
                                                 </li>
                                             )
                                         })}
+                                            </div>
+                                        )
+                                    }
                                 </React.Fragment>
                             )
                         })}
