@@ -167,12 +167,13 @@ $desktopBreak: 1280px;
 
                 .desktop_nav_link_item {
                     list-style: none;
-                    padding: 0 12px;
+                    padding: 0;
                     position: relative;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     height: 72px;
+                    min-width: 64px;
 
                     &.right {
                         padding: 0 8px;
@@ -212,7 +213,7 @@ $desktopBreak: 1280px;
 
                     &.watch_live {
                         border: 1px solid #cccccc;
-                        border-radius: 2px;
+                        border-radius: 3px;
                         padding: 5px 12px 5px 22px;
                         font-size: 12px;
                         height: 32px;
@@ -226,6 +227,7 @@ $desktopBreak: 1280px;
                             .desktop_nav_link_item_link {
                                 border: none;
                                 top: 9px;
+                                font-weight: 400;
                             }
                         }
 
@@ -268,10 +270,11 @@ $desktopBreak: 1280px;
 
                         .desktop_nav_link_menu_item {
                             color: #000000;
-                            padding: 18px 8px;
+                            padding: 16px 8px;
                             list-style: none;
                             font-size: 16px;
-                            line-height: 16px;
+                            line-height: 18px;
+                            min-width: 160px;
                             cursor: pointer;
                             transition: background-color 0.2s;
                             background-color: transparent;
@@ -313,7 +316,7 @@ $desktopBreak: 1280px;
 
                     &:hover {
                         .desktop_nav_link_item_link {
-                            color: #999;
+                            font-weight: 600;
                             border-bottom: 8px solid #FFF;
                             padding-bottom: 18px;
                             top: 13px;
@@ -707,7 +710,7 @@ $desktopBreak: 1280px;
 .NavigationMobile__cont {
     position: fixed;
     z-index: 5000;
-    top: 50px;
+    top: 56px;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -725,20 +728,13 @@ $desktopBreak: 1280px;
     &.open_nav {
         //transform: translate3d(0, 0, 0);
         opacity: 1;
-        animation: fadeIn ease 0.2s;
-        -webkit-animation: fadeIn ease 0.2s;
-        -moz-animation: fadeIn ease 0.2s;
-        -o-animation: fadeIn ease 0.2s;
-        -ms-animation: fadeIn ease 0.2s;
+        animation: fadeIn ease 0.3s;
+        -webkit-animation: fadeIn ease 0.3s;
+        -moz-animation: fadeIn ease 0.3s;
+        -o-animation: fadeIn ease 0.3s;
+        -ms-animation: fadeIn ease 0.3s;
     }
 
-    .fade-in {
-        animation: fadeIn ease 20s;
-        -webkit-animation: fadeIn ease 20s;
-        -moz-animation: fadeIn ease 20s;
-        -o-animation: fadeIn ease 20s;
-        -ms-animation: fadeIn ease 20s;
-    }
     @keyframes fadeIn {
         0% {opacity:0;}
         100% {opacity:1;}
@@ -791,7 +787,8 @@ $desktopBreak: 1280px;
         justify-content: space-between;
 
         .mobile_nav_link_list_item {
-            font-size: 18px;
+            font-size: 16px;
+            line-height: 32px;
             list-style: none;
             border: 1px solid #E3E3E3;
             box-shadow: 0px 1px 4px #0000001A;
@@ -835,7 +832,7 @@ $desktopBreak: 1280px;
             button,
             div {
                 color: #0B223E;
-                font-weight: 700;
+                font-weight: 400;
                 text-decoration: none;
                 display: inline-block;
                 -webkit-appearance: none;
@@ -847,6 +844,36 @@ $desktopBreak: 1280px;
                 height: 100%;
                 padding: 10px 20px;
                 transition: background-color 0s 0.5s; // delay background change to occur when menu is already closed
+            }
+
+            .mobile_nav_primary_logo {
+                display: block;
+                margin: 0 auto;
+                max-width: 40px;
+                max-height: 40px;
+
+            }
+
+            .mobile_nav_primary_title {
+                text-align: center;
+            }
+        }
+
+        .mobile_nav_link_list_item_right {
+            flex: none;
+            height: 56px;
+            width: 100%;
+            border-top: none;
+            border-bottom: 1px solid #CECECE;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
+
+            .Navigation_chevron::before {
+                transform: translate(0, -80%) rotate(45deg);
+                color: #236AAE;
             }
         }
 
@@ -883,6 +910,57 @@ $desktopBreak: 1280px;
                 }
             }
         }
+    }
+}
+
+.slideIn {
+    animation: slideIn ease 0.3s;
+    -webkit-animation: slideIn ease 0.3s;
+    -moz-animation: slideIn ease 0.3s;
+    -o-animation: slideIn ease 0.3s;
+    -ms-animation: slideIn ease 0.3s;
+}
+
+.slideOut {
+    animation: slideOut 0.5s forwards;
+    -webkit-animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
+@-webkit-keyframes slideIn {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(10%); }
+}
+@keyframes slideOut {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(50%); }
+}
+@-webkit-keyframes slideOut {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(50%); }
+}
+
+.janrain_mobile_icon {
+    position: absolute;
+    right: 46px;
+    background: transparent;
+
+    .janrain_mobile_icon_btn {
+        background: transparent;
+        border: none;
+    }
+
+    .janrain_mobile_profile_icon {
+        height: 56px;
+        width: 46px;
+        background: transparent;
+    }
+
+    @media (min-width: $tabletPortraitBreak) {
+        display: none;
     }
 }
 

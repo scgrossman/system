@@ -8,11 +8,24 @@ import styles from './GlobalNav.module.scss';
 class GlobalNavMobile extends PureComponent {
     state = {
         mobile_more_menu_open: false,
+        mobile_watch_menu_open: false,
+        mobile_listen_menu_open: false,
     }
 
     toggleMobileMoreMenu = () => {
         this.setState({
             mobile_more_menu_open: !this.state.mobile_more_menu_open,
+        })
+    }
+
+    toggleMobileWatchMenu = () => {
+        this.setState({
+            mobile_watch_menu_open: !this.state.mobile_watch_menu_open,
+        })
+    }
+    toggleMobileListenMenu = () => {
+        this.setState({
+            mobile_listen_menu_open: !this.state.mobile_listen_menu_open,
         })
     }
 
@@ -26,7 +39,7 @@ class GlobalNavMobile extends PureComponent {
             getReactWpUrl,
             withNavProps
         } = this.props
-        const { mobile_more_menu_open } = this.state
+        const { mobile_more_menu_open, mobile_watch_menu_open, mobile_listen_menu_open } = this.state
 
         return (
             <div className={`${styles.NavigationMobile__cont} ${menu_collapsed_class}`}>
@@ -62,7 +75,8 @@ class GlobalNavMobile extends PureComponent {
                                                     }
                                                 }}
                                             >
-                                                {left_item.title}
+                                                <img className={styles.mobile_nav_primary_logo} src={left_item.logo} />
+                                                <div className={styles.mobile_nav_primary_title}>{left_item.title}</div>
                                             </LinkComponent>
                                         )}
                                         {isMore && (
@@ -79,7 +93,9 @@ class GlobalNavMobile extends PureComponent {
                                     {mobile_more_menu_open &&
                                         isMore &&
                                         left_item.child_menu.length !== 0 && (
-                                            <div className={`${styles.mobile_nav_secondary_list}`}>
+                                            <div className={`${styles.mobile_nav_secondary_list} ${
+                                                mobile_more_menu_open ? styles.slideIn : styles.slideOut
+                                            }`}>
                                                 <div className={`${styles.mobile_nav_secondary_back} ${styles.Navigation_chevron}`} onClick={this.toggleMobileMoreMenu}>Back</div>
                                                 {left_item.child_menu.map(more_child_item => {
                                             const url_formatted =
@@ -122,52 +138,149 @@ class GlobalNavMobile extends PureComponent {
                 </ul>
 
                 <ul className={styles.mobile_nav_link_list}>
-                    {Object.keys(nav).length !== 0 &&
+                {Object.keys(nav).length !== 0 &&
                         nav.right.map(right_item => {
-                            if (right_item.title !== 'Miscl') return ''
+                            const url_formatted = right_item.url && removeDomain(right_item.url)
+                            const isWatch = right_item.title === 'Watch'
+                            const isListen = right_item.title === 'Listen'
+                            const doReactPage = isReactUrl(url_formatted)
+                            const proper_url = getReactWpUrl(url_formatted, doReactPage)
 
                             return (
-                                <React.Fragment key={right_item.ID + 'mobile'}>
-                                    {right_item.child_menu.map(right_child_item => {
-                                        const url_formatted =
-                                            right_child_item.url &&
-                                            removeDomain(right_child_item.url)
-                                        const doReactPage = isReactUrl(url_formatted)
-                                        const proper_url = getReactWpUrl(url_formatted, doReactPage)
-
-                                        return (
-                                            <li
-                                                className={styles.mobile_nav_link_list_item}
-                                                key={right_child_item.ID + 'mobile'}
+                                <React.Fragment key={right_item.ID}>
+                                    <li className={`${styles.mobile_nav_link_list_item} ${styles.mobile_nav_link_list_item_right}`}>
+                                        {!isWatch && !isListen && (
+                                            <LinkComponent
+                                                url={proper_url}
+                                                withNavProps={withNavProps}
+                                                singlePageNavigation={doReactPage}
+                                                isNavLink
+                                                onClick={() => {
+                                                    if (doReactPage) {
+                                                        navMenuToggle()
+                                                        modalMenuClose()
+                                                    }
+                                                }}
                                             >
-                                                <LinkComponent
-                                                    url={proper_url}
-                                                    withNavProps={withNavProps}
-                                                    singlePageNavigation={doReactPage}
-                                                    isNavLink
-                                                    onClick={() => {
-                                                        if (doReactPage) {
-                                                            navMenuToggle()
-                                                            modalMenuClose()
-                                                        }
-                                                    }}
+                                                {right_item.title}
+                                            </LinkComponent>
+                                        )}
+                                        {isWatch && (
+                                            <div onClick={this.toggleMobileWatchMenu}>
+                                                {right_item.title}
+                                                <span
+                                                    className={`${styles.Navigation_chevron} ${
+                                                        mobile_watch_menu_open ? styles.active : ''
+                                                    }`}
+                                                />
+                                            </div>
+                                        )}
+                                        {isListen && (
+                                            <div onClick={this.toggleMobileListenMenu}>
+                                                {right_item.title}
+                                                <span
+                                                    className={`${styles.Navigation_chevron} ${
+                                                        mobile_listen_menu_open ? styles.active : ''
+                                                    }`}
+                                                />
+                                            </div>
+                                        )}
+                                    </li>
+                                    {mobile_watch_menu_open &&
+                                        isWatch &&
+                                        right_item.child_menu.length !== 0 && (
+                                            <div className={`${styles.mobile_nav_secondary_list} ${
+                                                mobile_watch_menu_open ? styles.slideIn : styles.slideOut
+                                            }`}>
+                                                <div className={`${styles.mobile_nav_secondary_back} ${styles.Navigation_chevron}`} onClick={this.toggleMobileWatchMenu}>Back</div>
+                                                {right_item.child_menu.map(more_child_item => {
+                                            const url_formatted =
+                                                more_child_item.url &&
+                                                removeDomain(more_child_item.url)
+                                            const doReactPage = isReactUrl(url_formatted)
+                                            const proper_url = getReactWpUrl(
+                                                url_formatted,
+                                                doReactPage
+                                            )
+
+                                            return (
+                                                <li
+                                                    className={`${styles.mobile_nav_link_list_item} ${styles.more}`}
+                                                    key={more_child_item.ID}
                                                 >
-                                                    {right_child_item.title}
-                                                </LinkComponent>
-                                            </li>
+                                                    <LinkComponent
+                                                        url={proper_url}
+                                                        withNavProps={withNavProps}
+                                                        singlePageNavigation={doReactPage}
+                                                        isNavLink
+                                                        onClick={() => {
+                                                            if (doReactPage) {
+                                                                navMenuToggle()
+                                                                modalMenuClose()
+                                                            }
+                                                        }}
+                                                    >
+                                                        {more_child_item.title}
+                                                    </LinkComponent>
+                                                </li>
+                                            )
+                                        })}
+                                            </div>
                                         )
-                                    })}
+                                    }
+                                    {mobile_listen_menu_open &&
+                                        isListen &&
+                                        right_item.child_menu.length !== 0 && (
+                                            <div className={`${styles.mobile_nav_secondary_list} ${
+                                                mobile_listen_menu_open ? styles.slideIn : styles.slideOut
+                                            }`}>
+                                                <div className={`${styles.mobile_nav_secondary_back} ${styles.Navigation_chevron}`} onClick={this.toggleMobileListenMenu}>Back</div>
+                                                {right_item.child_menu.map(more_child_item => {
+                                            const url_formatted =
+                                                more_child_item.url &&
+                                                removeDomain(more_child_item.url)
+                                            const doReactPage = isReactUrl(url_formatted)
+                                            const proper_url = getReactWpUrl(
+                                                url_formatted,
+                                                doReactPage
+                                            )
+
+                                            return (
+                                                <li
+                                                    className={`${styles.mobile_nav_link_list_item} ${styles.more}`}
+                                                    key={more_child_item.ID}
+                                                >
+                                                    <LinkComponent
+                                                        url={proper_url}
+                                                        withNavProps={withNavProps}
+                                                        singlePageNavigation={doReactPage}
+                                                        isNavLink
+                                                        onClick={() => {
+                                                            if (doReactPage) {
+                                                                navMenuToggle()
+                                                                modalMenuClose()
+                                                            }
+                                                        }}
+                                                    >
+                                                        {more_child_item.title}
+                                                    </LinkComponent>
+                                                </li>
+                                            )
+                                        })}
+                                            </div>
+                                        )
+                                    }
                                 </React.Fragment>
                             )
                         })}
                 </ul>
 
-                <ul className={styles.mobile_nav_link_list}>
+                {/* <ul className={styles.mobile_nav_link_list}>
                     <li id="ump-user-account-links" className={styles.mobile_nav_link_list_item}>
                         <button
                             id="captureSignInLink"
                             className="captureSignInLink capture_modal_open"
-                            style={{ display: 'none' }}
+                            style={{ display: 'block' }}
                         >
                             Sign In
                         </button>
@@ -225,7 +338,7 @@ class GlobalNavMobile extends PureComponent {
                     </ul>
                 </div>
 
-                <p className="login-failed-note" style={{ display: 'none' }} />
+                <p className="login-failed-note" style={{ display: 'none' }} /> */}
             </div>
         )
     }

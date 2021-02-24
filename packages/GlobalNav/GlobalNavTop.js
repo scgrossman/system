@@ -86,6 +86,18 @@ class GlobalNavTop extends PureComponent {
                         />
                     </a>
 
+                    <div className={`${styles.janrain_mobile_icon}`}>
+                        <button
+                            id="captureSignInLink"
+                            className={`captureSignInLink capture_modal_open ${styles.janrain_mobile_icon_btn}`}
+                            style={{ display: 'block' }}
+                        >
+                            <div className={styles.janrain_mobile_profile_icon}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{fill:'none'}}> <defs> <clipPath id="a"> <circle class="a" cx="12" cy="12" r="12" transform="translate(-1854 840)" style={{fill:'none'}}/> </clipPath> </defs> <g transform="translate(1866 -828)" clip-path="url(#a)"> <g class="c" transform="translate(-1854 855)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1847 844)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="5" cy="5" r="5" style={{stroke:'none'}}/> <circle class="a" cx="5" cy="5" r="4.25" style={{fill:'none'}}/> </g> <g class="c" transform="translate(-1854 840)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> </g> <path class="a" d="M0 0h48v48H0z"/> </svg>
+                            </div>
+                        </button>
+                    </div>
+
                     <div className={styles.livetracker_text}>Live Tracker</div>
 
                     {/* <div className={styles.video_text}>
