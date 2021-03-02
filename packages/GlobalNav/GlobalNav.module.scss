@@ -213,7 +213,7 @@ $desktopBreak: 1280px;
 
                     &.watch_live {
                         border: 1px solid #cccccc;
-                        border-radius: 3px;
+                        border-radius: 2px;
                         padding: 5px 12px 5px 22px;
                         font-size: 12px;
                         height: 32px;
@@ -388,6 +388,7 @@ $desktopBreak: 1280px;
                 position: relative;
                 width: 24px;
                 height: 24px;
+                top: 4px;
                 background-color: transparent;
                 cursor: pointer;
 
@@ -766,7 +767,7 @@ $desktopBreak: 1280px;
         padding: 10px 20px;
         color: #0B223E;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 400;
         border-bottom: 1px solid #CECECE;
         margin-bottom: 24px;
 
@@ -779,7 +780,7 @@ $desktopBreak: 1280px;
     }
 
     .mobile_nav_link_list {
-        padding: 0 0 20px 0;
+        padding: 0;
         margin: 0;
         background-color: #FFFFFF;
         display: flex;
@@ -796,7 +797,7 @@ $desktopBreak: 1280px;
             background-color: #FFFFFF;
             position: relative;
             flex: 0 31%;
-            height: 100px;
+            height: 88px;
             margin-bottom: 3.5%;
 
             &:last-child {
@@ -846,6 +847,10 @@ $desktopBreak: 1280px;
                 transition: background-color 0s 0.5s; // delay background change to occur when menu is already closed
             }
 
+            a {
+                padding: 10px;
+            }
+
             .mobile_nav_primary_logo {
                 display: block;
                 margin: 0 auto;
@@ -856,6 +861,8 @@ $desktopBreak: 1280px;
 
             .mobile_nav_primary_title {
                 text-align: center;
+                padding: 0;
+                height: auto;
             }
         }
 
@@ -870,6 +877,10 @@ $desktopBreak: 1280px;
             border-radius: 0;
             box-shadow: none;
             margin: 0;
+
+            &:last-child {
+                display: none;
+            }
 
             .Navigation_chevron::before {
                 transform: translate(0, -80%) rotate(45deg);
@@ -908,6 +919,74 @@ $desktopBreak: 1280px;
                     transition: transform 0.25s;
                     left: 10px;
                 }
+            }
+        }
+    }
+
+    .sn_now_cta_mobile {
+        position: relative;
+        height: 56px;
+        background-color: #F2F2F2;
+        padding: 16px 16px 16px 30px;
+        border-radius: 4px;
+        margin-top: 10px;
+        text-align: left;
+        color: #000000;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translate(0, -50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ff2020;
+            animation: watchLiveAni 1.8s infinite linear;
+
+            @keyframes watchLiveAni {
+                0% {
+                    background-color: #ff2020;
+                }
+                50% {
+                    background-color: #ac0202;
+                }
+                100% {
+                    background-color: #ff2020;
+                }
+            }
+        }
+
+        .cta_message_first {
+            display: inline-block;
+            position: relative;
+        }
+
+        .cta_message_sn_now_logo {
+            position: relative;
+            display: inline-block;
+            width: 77px;
+            height: 24px;
+            margin: 0 2px 0 6px;
+            vertical-align: middle
+        }
+
+        .cta_message_second {
+            display: inline-block;
+            position: relative;
+        }
+
+        .cta_message_open_new {
+            display: none;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            float: right;
+
+            @media (min-width: 340px) {
+                display: inline-block;
             }
         }
     }
@@ -954,8 +1033,10 @@ $desktopBreak: 1280px;
     }
 
     .janrain_mobile_profile_icon {
+        position: relative;
         height: 56px;
         width: 46px;
+        top: 4px;
         background: transparent;
     }
 
