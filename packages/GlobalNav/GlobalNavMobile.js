@@ -258,9 +258,7 @@ class GlobalNavMobile extends PureComponent {
                                                         singlePageNavigation={doReactPage}
                                                         isNavLink
                                                         onClick={() => {
-                                                            console.log('THIS IS LISTEN YO')
                                                             if (doReactPage) {
-                                                                console.log('THIS IS LISTEN YO')
                                                                 navMenuToggle()
                                                                 modalMenuClose()
                                                                 window.scrollTo(0, 0)
