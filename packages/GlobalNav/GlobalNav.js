@@ -17,7 +17,7 @@ import styles from './GlobalNav.module.scss';
 
 class GlobalNav extends Component {
     state = {
-        nav: {},
+        nav: { },
         isFetching_nav: false,
         modal_menu_type: null,
         modal_menu_list: null,
@@ -496,7 +496,7 @@ class GlobalNav extends Component {
             primary
         } = this.state
 
-        const { history, sport } = this.props
+        const { history, sport, router } = this.props
 
         const subnav = this.chooseSubNavItems(nav, primary)
 
@@ -536,6 +536,7 @@ class GlobalNav extends Component {
                     modalMenuToggle={this.modalMenuToggle}
                     tabletBreak={this.tabletBreak}
                     desktopBreak={this.desktopBreak}
+                    router={router}
                 />
 
                 <div className={`${styles.Navigation_ghost__cont} ${isBasic_class}`} />

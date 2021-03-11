@@ -1,5 +1,5 @@
 {
-  "name": "@digitalmedai/system",
+  "name": "@digitalmedia/system",
   "version": "1.0.0",
   "engines": {
     "node": "^8.11.3",
@@ -63,7 +63,7 @@
     "stylelint-scss": "^3.6.1"
   },
   "dependencies": {
-    "@digitalmedia/sn-global-nav": "1.0.0",
+    "@digitalmedia/sn-global-nav": "1.2.0",
     "@storybook/addon-a11y": "^5.3.9",
     "axios": "^0.19.2",
     "immutability-helper": "^3.0.2",
