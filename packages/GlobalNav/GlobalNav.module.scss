@@ -217,7 +217,7 @@ $desktopBreak: 1280px;
                         padding: 5px 12px 5px 22px;
                         font-size: 12px;
                         height: 32px;
-                        margin-right: 24px;
+                        margin-left: 12px;
 
                         @media (min-width: $tabletLandscapeBreak) {
                             font-size: 14px;
@@ -266,13 +266,20 @@ $desktopBreak: 1280px;
                         top: 100%;
                         left: -5px;
                         min-width: 190px;
-                        padding: 18px 24px;
+                        padding: 24px;
                         background-color: #FFFFFF;
                         margin: 0;
                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);
 
+                        .desktop_nav_link_menu_logo {
+                            display: block;
+                            width: 40px;
+                            height: 100%;
+                        }
+
                         .desktop_nav_link_menu_left {
                             width: auto;
+                            padding-left: 12px;
                         }
 
                         .desktop_nav_link_menu_item {
@@ -305,6 +312,7 @@ $desktopBreak: 1280px;
                             display: none;
                             position: relative;
                             text-align: left;
+                            margin-top: 18px;
 
                             @media (min-width: $desktopBreak) {
                                 display: inline-block;
@@ -859,21 +867,37 @@ $desktopBreak: 1280px;
         100% {opacity:1;}
     }
 
-    .mobile_menu_search {
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        color: #0B223E;
-        font-size: 18px;
-        font-weight: 400;
-        border-bottom: 1px solid #CECECE;
-        margin-bottom: 24px;
+    .mobile_menu_search_container {
+        .mobile_menu_search_icon {
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            margin-left: 10px;
+        }
 
-        button {
-            background-color: transparent;
-            border: 0;
-            outline: 0;
-            -webkit-appearance: none;
+        .mobile_menu_search {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px 10px 40px;
+            color: #0B223E;
+            font-size: 18px;
+            font-weight: 400;
+            border: none;
+            border-bottom: 1px solid #CECECE;
+            margin-bottom: 24px;
+            width: 100%;
+
+            &::placeholder {
+                color: #0B223E;
+                font-size: 16px;
+            }
+
+            button {
+                background-color: transparent;
+                border: 0;
+                outline: 0;
+                -webkit-appearance: none;
+            }
         }
     }
 

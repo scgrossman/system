@@ -148,6 +148,7 @@ class GlobalNavTop extends PureComponent {
                                                         id={`desktop_nav_link_menu_${left_item.ID}`}
                                                         className={styles.desktop_nav_link_menu}
                                                     >
+                                                        <img className={styles.desktop_nav_link_menu_logo} src={left_item.logo} />
                                                         <div className={styles.desktop_nav_link_menu_left}>
                                                         {left_item.child_menu.map(left_child_item => {
                                                             const url_formatted_child =

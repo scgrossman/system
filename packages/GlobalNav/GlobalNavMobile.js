@@ -30,6 +30,11 @@ class GlobalNavMobile extends PureComponent {
         })
     }
 
+    handleSearchSubmit = (e) => {
+        e.preventDefault()
+        window.location.href = '/search/?s=' + this.state.query.replace(/\s+/g,'+')
+    }
+
     render() {
         const {
             menu_collapsed_class,
@@ -46,9 +51,16 @@ class GlobalNavMobile extends PureComponent {
 
         return (
             <div className={`${styles.NavigationMobile__cont} ${menu_collapsed_class}`}>
-                <div className={styles.mobile_menu_search}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px"><path class="a" fill="none" d="M0 0h24v24H0z"/><g class="b" fill="none" stroke="#0e69ae" stroke-width="1px" transform="translate(3 3)"><circle cx="7" cy="7" r="7"/><circle class="a" cx="7" cy="7" r="6"/></g><path class="b" fill="none" stroke="#0e69ae" stroke-width="2px" d="M13.823 13.823l6.519 6.519"/></svg>
-                    <button id="search-input-mobile">Search</button>
+                <div className={styles.mobile_menu_search_container}>
+                    <svg className={styles.mobile_menu_search_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px"><path class="a" fill="none" d="M0 0h24v24H0z"/><g class="b" fill="none" stroke="#0e69ae" stroke-width="1px" transform="translate(3 3)"><circle cx="7" cy="7" r="7"/><circle class="a" cx="7" cy="7" r="6"/></g><path class="b" fill="none" stroke="#0e69ae" stroke-width="2px" d="M13.823 13.823l6.519 6.519"/></svg>
+                    <form onSubmit={this.handleSearchSubmit}>
+                        <input className={styles.mobile_menu_search}
+                            type="text"
+                            placeholder="Search"
+                            onChange={event => {this.setState({query: event.target.value})}}
+                        />
+                        <input type="submit" value="Submit" style={{ display: 'none' }} />
+                    </form>
                 </div>
 
                 <ul className={styles.mobile_nav_link_list}>
