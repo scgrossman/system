@@ -257,6 +257,9 @@ $desktopBreak: 1280px;
                         }
                     }
 
+                    .desktop_nav_link_menu_container {
+                        //min-width: 600px;
+                    }
                     .desktop_nav_link_menu {
                         display: none;
                         position: absolute;
@@ -268,13 +271,18 @@ $desktopBreak: 1280px;
                         margin: 0;
                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);
 
+                        .desktop_nav_link_menu_left {
+                            width: auto;
+                        }
+
                         .desktop_nav_link_menu_item {
                             color: #000000;
                             padding: 16px 8px;
                             list-style: none;
                             font-size: 16px;
                             line-height: 18px;
-                            min-width: 160px;
+                            min-width: 154px;
+                            margin-right: 46px;
                             cursor: pointer;
                             transition: background-color 0.2s;
                             background-color: transparent;
@@ -290,6 +298,69 @@ $desktopBreak: 1280px;
                                 width: 100%;
                                 display: block;
                                 text-align: left;
+                            }
+                        }
+
+                        .desktop_nav_teams_panel {
+                            display: none;
+                            position: relative;
+                            text-align: left;
+
+                            @media (min-width: $desktopBreak) {
+                                display: inline-block;
+                            }
+                            
+                            .desktop_nav_teams_panel_conference_name {
+                                display: block;
+                                position: relative;
+                                font-size: 16px;
+                                text-transform: uppercase;
+                                color: #343434;
+                                border-bottom: 1px solid #E3E3E3;
+                                line-height: 16px;
+                                padding-bottom: 10px;
+                                margin-bottom: 18px;
+                            }
+
+                            .desktop_nav_teams_panel_conference {
+                                display: flex;
+                                justify-content: space-around;
+                                margin-bottom: 32px;
+
+                                .desktop_nav_teams_panel_column {
+                                    min-width: 166px;
+
+                                    .desktop_nav_teams_panel_division_title {
+                                        position: relative;
+                                        display: inline-block;
+                                        color: #979797;
+                                        font-size: 16px;
+                                        margin-bottom: 18px;
+                                    }
+    
+                                    .desktop_nav_teams_panel_item_link {
+                                        margin: 0 8px 0 0;
+                                        padding: 12px 8px;
+
+                                        &:hover {
+                                            background-color: #EAECEF;
+                                        }
+
+                                        .desktop_nav_teams_panel_item_team_logo {
+                                            position: relative;
+                                            display: inline-block;
+                                            width: 24px;
+                                            margin-right: 8px;
+                                        }
+    
+                                        .desktop_nav_teams_panel_item_team_name {
+                                            display: inline-block;
+                                            position: relative;
+                                            font-size: 16px;
+                                            color: #000000;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -310,11 +381,17 @@ $desktopBreak: 1280px;
 
                     &.open_submenu {
                         .desktop_nav_link_menu {
-                            display: block;
+                            display: flex;
+                            justify-content: space-around;
                         }
                     }
 
                     &:hover {
+                        .desktop_nav_link_menu {
+                            display: flex;
+                            justify-content: space-around;
+                        }
+
                         .desktop_nav_link_item_link {
                             font-weight: 600;
                             border-bottom: 8px solid #FFF;
@@ -333,7 +410,8 @@ $desktopBreak: 1280px;
 
                         &:hover {
                             .desktop_nav_link_menu {
-                                display: block;
+                                display: flex;
+                                justify-content: space-around;
                             }
                         }
                     }
@@ -360,6 +438,26 @@ $desktopBreak: 1280px;
                         width: '24px';
                         height: '24px';
                         border-radius: '100%';
+                    }
+                }
+
+                &.right {
+                    .desktop_nav_link_item {
+                        &.open_submenu {
+                            .desktop_nav_link_menu {
+                                display: block;
+                            }
+                        }
+    
+                        &:hover {
+                            .desktop_nav_link_menu {
+                                display: block;
+                            }
+                        }
+
+                        .desktop_nav_link_menu_item {
+                            margin: 0;
+                        }
                     }
                 }
             }

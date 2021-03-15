@@ -116,6 +116,8 @@ class GlobalNavTop extends PureComponent {
                                         this.state.open_desktop_nav_item === left_item.ID
                                     const hasChildMenu =
                                         left_item.child_menu && left_item.child_menu.length !== 0
+                                    const hasTeamsData =
+                                        left_item.teams_data && left_item.teams_data.length !== 0
                                     const isMore = left_item.title === 'More'
 
                                     return (
@@ -141,79 +143,117 @@ class GlobalNavTop extends PureComponent {
                                                 )}
                                             </div>
                                             {hasChildMenu && (
-                                                <ul
-                                                    id={`desktop_nav_link_menu_${left_item.ID}`}
-                                                    className={styles.desktop_nav_link_menu}
-                                                >
-                                                    {left_item.child_menu.map(left_child_item => {
-                                                        const url_formatted_child =
-                                                            left_child_item.url &&
-                                                            removeDomain(left_child_item.url)
+                                                <div className={styles.desktop_nav_link_menu_container}>
+                                                    <ul
+                                                        id={`desktop_nav_link_menu_${left_item.ID}`}
+                                                        className={styles.desktop_nav_link_menu}
+                                                    >
+                                                        <div className={styles.desktop_nav_link_menu_left}>
+                                                        {left_item.child_menu.map(left_child_item => {
+                                                            const url_formatted_child =
+                                                                left_child_item.url &&
+                                                                removeDomain(left_child_item.url)
 
-                                                        let modalType = ''
-                                                        if (left_child_item.title === 'Teams') {
-                                                            modalType = 'teams'
-                                                        } else if (
-                                                            left_child_item.title === 'Tables'
-                                                        ) {
-                                                            modalType = 'leagues'
-                                                        }
+                                                            let modalType = ''
+                                                            if (left_child_item.title === 'Teams') {
+                                                                modalType = 'teams'
+                                                            } else if (
+                                                                left_child_item.title === 'Tables'
+                                                            ) {
+                                                                modalType = 'leagues'
+                                                            }
 
-                                                        const doReactPage = isReactUrl(
-                                                            url_formatted_child
-                                                        )
-                                                        const proper_url = getReactWpUrl(
-                                                            url_formatted_child,
-                                                            doReactPage
-                                                        )
+                                                            const doReactPage = isReactUrl(
+                                                                url_formatted_child
+                                                            )
+                                                            const proper_url = getReactWpUrl(
+                                                                url_formatted_child,
+                                                                doReactPage
+                                                            )
 
-                                                        return (
-                                                            <li
-                                                                className={styles.desktop_nav_link_menu_item}
-                                                                key={left_child_item.ID}
-                                                            >
-                                                                {!modalType && (
-                                                                    <LinkComponent
-                                                                        className={styles.desktop_nav_link_menu_item_link}
-                                                                        withNavProps={withNavProps}
-                                                                        url={proper_url}
-                                                                        singlePageNavigation={doReactPage}
-                                                                        isNavLink
-                                                                        onClick={() => {
-                                                                            if (doReactPage) {
-                                                                                modalMenuClose()
+                                                            return (
+                                                                <li
+                                                                    className={styles.desktop_nav_link_menu_item}
+                                                                    key={left_child_item.ID}
+                                                                >
+                                                                    {!modalType && (
+                                                                        <LinkComponent
+                                                                            className={styles.desktop_nav_link_menu_item_link}
+                                                                            withNavProps={withNavProps}
+                                                                            url={proper_url}
+                                                                            singlePageNavigation={doReactPage}
+                                                                            isNavLink
+                                                                            onClick={() => {
+                                                                                if (doReactPage) {
+                                                                                    modalMenuClose()
+                                                                                    this.closeDesktopNavLinkNavigation()
+                                                                                }
+                                                                            }}
+                                                                        >
+                                                                            {left_child_item.title}
+                                                                        </LinkComponent>
+                                                                    )}
+                                                                    {modalType && (
+                                                                        <div
+                                                                            className={styles.desktop_nav_link_menu_item_link}
+                                                                            onClick={() => {
+                                                                                modalMenuToggle(
+                                                                                    modalType,
+                                                                                    left_item.title.toLowerCase()
+                                                                                )
                                                                                 this.closeDesktopNavLinkNavigation()
-                                                                            }
-                                                                        }}
-                                                                    >
-                                                                        {left_child_item.title}
-                                                                    </LinkComponent>
-                                                                )}
-                                                                {modalType && (
-                                                                    <div
-                                                                        className={styles.desktop_nav_link_menu_item_link}
-                                                                        onClick={() => {
-                                                                            modalMenuToggle(
-                                                                                modalType,
-                                                                                left_item.title.toLowerCase()
-                                                                            )
-                                                                            this.closeDesktopNavLinkNavigation()
-                                                                        }}
-                                                                    >
-                                                                        {left_child_item.title}
-                                                                    </div>
-                                                                )}
-                                                            </li>
-                                                        )
-                                                    })}
-                                                </ul>
+                                                                            }}
+                                                                        >
+                                                                            {left_child_item.title}
+                                                                        </div>
+                                                                    )}
+                                                                </li>
+                                                            )
+                                                        })}
+                                                        </div>
+                                                        <div className={styles.desktop_nav_link_menu_right}>
+                                                        {hasTeamsData && (
+                                                            <div className={styles.desktop_nav_teams_panel}>
+                                                                {Object.keys(left_item.teams_data).map(conference => {
+                                                                    return (
+                                                                        <div>
+                                                                            <div className={styles.desktop_nav_teams_panel_conference_name}>{conference}</div>
+                                                                            <div className={styles.desktop_nav_teams_panel_conference}>
+                                                                                {Object.keys(left_item.teams_data[conference]).map(division => {
+                                                                                    return (
+                                                                                        <div className={styles.desktop_nav_teams_panel_column}>
+                                                                                            <div className={styles.desktop_nav_teams_panel_division_title}>{division}</div>
+                                                                                            {left_item.teams_data[conference][division].map(team => {
+                                                                                                return (
+                                                                                                    <div>
+                                                                                                        <a href={`/${team.league}/teams/${team.team_slug}`}>
+                                                                                                            <div className={styles.desktop_nav_teams_panel_item_link}>
+                                                                                                                <img className={styles.desktop_nav_teams_panel_item_team_logo} src={team.team_image_url}/>
+                                                                                                                <div className={styles.desktop_nav_teams_panel_item_team_name}>{team.team_name}</div>
+                                                                                                            </div>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                )
+                                                                                            })}
+                                                                                        </div>
+                                                                                    )
+                                                                                })}
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </div>
+                                                        )}
+                                                        </div>
+                                                    </ul>
+                                                </div>
                                             )}
                                         </li>
                                     )
                                 })}
                         </ul>
 
-                        <ul className={styles.desktop_nav_link_list}>
+                        <ul className={`${styles.desktop_nav_link_list} ${styles.right}`}>
                             {Object.keys(nav).length !== 0 &&
                                 nav.right.map(right_item => {
                                     if (right_item.title === 'Watch Live') return ''
