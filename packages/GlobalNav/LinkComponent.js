@@ -15,7 +15,7 @@ export default function LinkComponent({ url, onClick, children, singlePageNaviga
         RouterNavLink = DefaultLink;
     }
 
-    return !singlePageNavigation || !router ? (
+    return !singlePageNavigation || !withNavProps ? (
         <a href={url} onClick={onClick} {...other}>
             {children}
         </a>

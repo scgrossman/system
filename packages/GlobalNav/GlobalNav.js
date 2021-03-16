@@ -91,32 +91,32 @@ class GlobalNav extends Component {
         '/golf/european/schedule',
         '/golf/european/rankings',
         '/golf/european/events',
-        '/nhl/scores',
-        '/nhl/standings',
-        '/nhl/signings',
-        '/nhl/trade-tracker',
-        '/nhl/playoffs',
-        '/nhl/stats',
-        '/nhl/players',
+        '/hockey/nhl/scores',
+        '/hockey/nhl/standings',
+        '/hockey/nhl/signings',
+        '/hockey/nhl/trade-tracker',
+        '/hockey/nhl/playoffs',
+        '/hockey/nhl/stats',
+        '/hockey/nhl/players',
         '/whc/scores',
         '/ahl/standings',
         '/ahl/scores',
-        '/mlb/scores',
-        '/mlb/standings',
-        '/mlb/playoffs',
-        '/mlb/stats',
-        '/mlb/players',
-        '/nba/scores',
-        '/nba/standings',
-        '/nba/stats',
-        '/nba/playoffs',
-        '/nba/players',
-        '/nfl/scores',
-        '/nfl/standings',
-        '/nfl/stats',
-        '/cfl/scores',
-        '/cfl/standings',
-        '/cfl/stats',
+        '/baseball/mlb/scores',
+        '/baseball/mlb/standings',
+        '/baseball/mlb/playoffs',
+        '/baseball/mlb/stats',
+        '/baseball/mlb/players',
+        '/basketball/nba/scores',
+        '/basketball/nba/standings',
+        '/basketball/nba/stats',
+        '/basketball/nba/playoffs',
+        '/basketball/nba/players',
+        '/football/nfl/scores',
+        '/football/nfl/standings',
+        '/football/nfl/stats',
+        '/football/cfl/scores',
+        '/football/cfl/standings',
+        '/football/cfl/stats',
         '/soccer/scores',
         '/soccer/champions-league/odds',
         '/juniors/scores',
@@ -136,8 +136,16 @@ class GlobalNav extends Component {
 
     componentDidMount() {
         this.getNav(sn_nav_url, this.callJsScripts)
+        let primaryPath = window.location.pathname.split('/')[2]
+        let sportPath = window.location.pathname.split('/')[1]
+
+        if(primaryPath === 'article') {
+            primaryPath = window.location.pathname.split('/')[1]
+        }
+
         this.setState({
-            primary: window.location.pathname.split('/')[1]
+            primary: primaryPath,
+            sport: sportPath
         })
     }
 
@@ -147,6 +155,7 @@ class GlobalNav extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('nmnm', this.props);
         const { navMenuCollapsed, modal_menu_open } = this.state;
 
         // FOR NAV MENU
@@ -159,6 +168,15 @@ class GlobalNav extends Component {
             } else {
                 this.resumePageScroll()
             }
+        }
+
+        if(prevState.sport !== this.state.sport) {
+            let primaryPath = window.location.pathname.split('/')[2]
+            let sportPath = window.location.pathname.split('/')[1]
+            this.setState({
+                primary: primaryPath,
+                sport: sportPath
+            })
         }
 
         // FOR TEAM MENU
@@ -255,19 +273,19 @@ class GlobalNav extends Component {
         return items
     }
 
-    chooseSubNavItems = (nav, primary) => {
+    chooseSubNavItems = (nav, sport, primary) => {
         let chosen_items = []
+        console.log({sport})
         // check if this is a sport or league page
-        if (this.ancillarySports.indexOf(primary) !== -1) {
+        if (this.ancillarySports.indexOf(sport) !== -1) {
+            let fixed_sport
 
-            let fixed_sport = primary;
-            switch (primary) {
-                case 'juniors':
-                    fixed_sport = 'jr. hockey';
-                break;
-                case 'usports':
-                    fixed_sport = 'u sports'
-                break;
+            if (sport === 'juniors') {
+                fixed_sport = 'jr. hockey'
+            } else if (sport === 'auto-racing') {
+                fixed_sport = 'auto racing'
+            } else {
+                fixed_sport = sport
             }
 
             chosen_items = this.getFromMainLeftMenu(fixed_sport, nav)
@@ -493,14 +511,15 @@ class GlobalNav extends Component {
             modal_menu_open,
             modal_menu_type,
             navMenuCollapsed,
-            primary
+            primary,
+            sport
         } = this.state
 
-        const { history, sport, router } = this.props
+        const { history, router, withNavProps } = this.props
 
-        const subnav = this.chooseSubNavItems(nav, primary)
+        const subnav = this.chooseSubNavItems(nav, sport, primary)
 
-        const pageTypeFromUrl = window.location.pathname.split('/')[2] || ''
+        const pageTypeFromUrl = window.location.pathname.split('/')[3] || ''
 
         const isLivetracker_class = pageTypeFromUrl === 'games' ? 'isLivetracker' : ''
         const isBasic_class =
@@ -537,6 +556,7 @@ class GlobalNav extends Component {
                     tabletBreak={this.tabletBreak}
                     desktopBreak={this.desktopBreak}
                     router={router}
+                    withNavProps={withNavProps}
                 />
 
                 <div className={`${styles.Navigation_ghost__cont} ${isBasic_class}`} />
@@ -552,6 +572,7 @@ class GlobalNav extends Component {
                     modalMenuToggle={this.modalMenuToggle}
                     pageTypeFromUrl={pageTypeFromUrl}
                     modal_menu_open={modal_menu_open}
+                    withNavProps={withNavProps}
                 />
 
                 <GlobalNavModal
@@ -561,6 +582,7 @@ class GlobalNav extends Component {
                     modalMenuClose={this.modalMenuClose}
                     acceptedMajorLeagues={this.acceptedMajorLeagues}
                     ancillarySportsLeaguesMap={this.ancillarySportsLeaguesMap}
+                    withNavProps={withNavProps}
                 />
 
                 <GlobalNavMobile
@@ -570,6 +592,7 @@ class GlobalNav extends Component {
                     getReactWpUrl={this.getReactWpUrl}
                     navMenuToggle={this.navMenuToggle}
                     modalMenuClose={this.modalMenuClose}
+                    withNavProps={withNavProps}
                 />
             </React.Fragment>
         )

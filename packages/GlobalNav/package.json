@@ -20,7 +20,6 @@
   },
   "homepage": "https://ui.sportsnet.ca",
   "dependencies": {
-    "axios": "^0.21.1",
     "prop-types": "^15.6.2"
   },
   "gitHead": "6ee1e4ed24960352b48a9736fa5c883c5a0a383a"

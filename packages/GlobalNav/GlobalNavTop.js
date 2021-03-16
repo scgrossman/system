@@ -169,6 +169,7 @@ class GlobalNavTop extends PureComponent {
                                                                         singlePageNavigation={doReactPage}
                                                                         isNavLink
                                                                         router={router}
+                                                                        withNavProps={withNavProps}
                                                                         onClick={() => {
                                                                             if (doReactPage) {
                                                                                 modalMenuClose()

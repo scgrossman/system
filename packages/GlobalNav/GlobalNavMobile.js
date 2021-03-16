@@ -54,6 +54,7 @@ class GlobalNavMobile extends PureComponent {
                                                 url={proper_url}
                                                 withNavProps={withNavProps}
                                                 singlePageNavigation={doReactPage}
+                                                withNavProps={withNavProps}
                                                 isNavLink
                                                 onClick={() => {
                                                     if (doReactPage) {
