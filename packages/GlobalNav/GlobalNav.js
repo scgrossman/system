@@ -12,6 +12,8 @@ import GlobalNavTop from './GlobalNavTop'
 import GlobalNavSub from './GlobalNavSub'
 import GlobalNavModal from './GlobalNavModal'
 import GlobalNavMobile from './GlobalNavMobile'
+import GlobalNavSubSecondary from './GlobalNavSubSecondary'
+import GlobalNavSubSecondaryMobile from './GlobalNavSubSecondaryMobile'
 
 import styles from './GlobalNav.module.scss';
 
@@ -277,6 +279,8 @@ class GlobalNav extends Component {
             }
         } else if (this.acceptedMajorLeagues.hasOwnProperty(primary)) {
             chosen_items = this.getFromMainLeftMenu(primary, nav)
+        } else if ( primary == 'videos' ) {
+            chosen_items = nav.videos
         }
 
         return chosen_items
@@ -541,6 +545,32 @@ class GlobalNav extends Component {
                 <div className={`${styles.Navigation_ghost__cont} ${isBasic_class}`} />
 
                 <GlobalNavSub
+                    isLivetracker_class={isLivetracker_class}
+                    isBasic_class={isBasic_class}
+                    subnav={subnav}
+                    sport={primary}
+                    isReactUrl={this.isReactUrl}
+                    getReactWpUrl={this.getReactWpUrl}
+                    modalMenuClose={this.modalMenuClose}
+                    modalMenuToggle={this.modalMenuToggle}
+                    pageTypeFromUrl={pageTypeFromUrl}
+                    modal_menu_open={modal_menu_open}
+                />
+
+                <GlobalNavSubSecondary
+                    isLivetracker_class={isLivetracker_class}
+                    isBasic_class={isBasic_class}
+                    subnav={subnav}
+                    sport={primary}
+                    isReactUrl={this.isReactUrl}
+                    getReactWpUrl={this.getReactWpUrl}
+                    modalMenuClose={this.modalMenuClose}
+                    modalMenuToggle={this.modalMenuToggle}
+                    pageTypeFromUrl={pageTypeFromUrl}
+                    modal_menu_open={modal_menu_open}
+                />
+
+                <GlobalNavSubSecondaryMobile
                     isLivetracker_class={isLivetracker_class}
                     isBasic_class={isBasic_class}
                     subnav={subnav}

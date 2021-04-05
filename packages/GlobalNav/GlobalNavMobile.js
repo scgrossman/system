@@ -80,7 +80,7 @@ class GlobalNavMobile extends PureComponent {
 
                             return (
                                 <React.Fragment key={left_item.ID}>
-                                    <li className={styles.mobile_nav_link_list_item}>
+                                    <li className={`${styles.mobile_nav_link_list_item} ${isMoreSports ? styles.more_sports : ''}`}>
                                         {!isMoreSports && (
                                             <LinkComponent
                                                 url={proper_url}
@@ -154,7 +154,7 @@ class GlobalNavMobile extends PureComponent {
                 </ul>
 
                 <ul className={styles.mobile_nav_link_list}>
-                {Object.keys(nav).length !== 0 &&
+                    {Object.keys(nav).length !== 0 &&
                         nav.right.map(right_item => {
                             const url_formatted = right_item.url && removeDomain(right_item.url)
                             const isWatch = right_item.title === 'Watch'
