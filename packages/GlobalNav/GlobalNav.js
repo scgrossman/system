@@ -404,12 +404,14 @@ class GlobalNav extends Component {
     navMenuToggle = () => {
         // Override menu logic for video pages on mobile: use subnav there instead.
         const { navMenuCollapsed } = this.state;
+        /*
         if (window.location.pathname.includes('/videos') && window.SN.isMobile) {
             document
                 .getElementById('menu-video-navigation')
                 .parentElement.classList.toggle('collapse')
             return
         }
+        */
 
         this.setState({
             navMenuCollapsed: !navMenuCollapsed
