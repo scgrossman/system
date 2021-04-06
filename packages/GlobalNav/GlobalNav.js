@@ -287,7 +287,6 @@ class GlobalNav extends Component {
 
     chooseSubNavItems = (nav, sport, primary) => {
         let chosen_items = []
-        console.log({sport})
         // check if this is a sport or league page
         if (this.ancillarySports.indexOf(sport) !== -1) {
             let fixed_sport
@@ -530,7 +529,6 @@ class GlobalNav extends Component {
         const { history, router, withNavProps } = this.props
 
         const subnav = this.chooseSubNavItems(nav, sport, primary)
-        console.log({nav,sport, primary});
         const pageTypeFromUrl = window.location.pathname.split('/')[3] || ''
 
         const isLivetracker_class = pageTypeFromUrl === 'games' ? 'isLivetracker' : ''
