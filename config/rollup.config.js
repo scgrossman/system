@@ -24,6 +24,7 @@ export default opts => {
     output: [
       { format: 'cjs', file: './dist/index.cjs.js', sourcemap: false, exports: 'named' },
       { format: 'es', file: './dist/index.es.js', sourcemap: false, exports: 'named' },
+      { format: 'es', file: './dist/index.nocss.es.js', sourcemap: false, exports: 'named' },
     ],
 
     external: ['react', 'react-dom', 'react-router-dom', 'axios', 'prop-types'].concat(snExternals),
