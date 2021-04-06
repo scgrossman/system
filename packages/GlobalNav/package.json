@@ -1,6 +1,6 @@
 {
   "name": "@digitalmedia/sn-global-nav",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.cjs.js",
   "module": "index.es.js",
@@ -21,5 +21,6 @@
   "homepage": "https://ui.sportsnet.ca",
   "dependencies": {
     "prop-types": "^15.6.2"
-  }
+  },
+  "gitHead": "6ee1e4ed24960352b48a9736fa5c883c5a0a383a"
 }

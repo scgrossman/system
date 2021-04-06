@@ -63,7 +63,8 @@ class GlobalNavTop extends PureComponent {
             modalMenuClose,
             modalMenuToggle,
             getReactWpUrl,
-            withNavProps
+            withNavProps,
+            router
         } = this.props
 
         return (
@@ -184,6 +185,8 @@ class GlobalNavTop extends PureComponent {
                                                                             url={proper_url}
                                                                             singlePageNavigation={doReactPage}
                                                                             isNavLink
+                                                                            router={router}
+                                                                            withNavProps={withNavProps}
                                                                             onClick={() => {
                                                                                 if (doReactPage) {
                                                                                     modalMenuClose()

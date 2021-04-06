@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LinkComponent({ url, onClick, children, singlePageNavigation, isNavLink, isExact, withNavProps, ...other } ) {
+export default function LinkComponent({ url, onClick, children, singlePageNavigation, isNavLink, isExact, withNavProps, router, ...other } ) {
 
     const DefaultLink = ({children, url, onClick}) => <a href={url} onClick={onClick} >{children}</a>;
     
@@ -15,7 +15,7 @@ export default function LinkComponent({ url, onClick, children, singlePageNaviga
         RouterNavLink = DefaultLink;
     }
 
-    return !singlePageNavigation ? (
+    return !singlePageNavigation || !withNavProps ? (
         <a href={url} onClick={onClick} {...other}>
             {children}
         </a>
