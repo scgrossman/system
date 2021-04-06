@@ -155,8 +155,22 @@ class GlobalNav extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('nmnm', this.props);
         const { navMenuCollapsed, modal_menu_open } = this.state;
+        let primaryPath = window.location.pathname.split('/')[2]
+        let sportPath = window.location.pathname.split('/')[1]
+
+         // Update nav and ticker only when going in between new league pages
+        if (
+            (prevState.league !== primaryPath &&
+                (this.leagueTickers.indexOf(prevState.league) !== -1 ||
+                    this.leagueTickers.indexOf(primaryPath) !== -1)) ||
+            prevState.sport !== sportPath
+        ) {
+            this.resetSubNavScroll()
+            this.initializeTickerEvents()
+            this.updateTickerData()
+            //this.setGlobalLeagueOrder(this.props.match.params.sport, this.state.nav)
+        }
 
         // FOR NAV MENU
         if (
@@ -169,10 +183,8 @@ class GlobalNav extends Component {
                 this.resumePageScroll()
             }
         }
-
-        if(prevState.sport !== this.state.sport) {
-            let primaryPath = window.location.pathname.split('/')[2]
-            let sportPath = window.location.pathname.split('/')[1]
+    
+        if(prevState.sport !== sportPath) {
             this.setState({
                 primary: primaryPath,
                 sport: sportPath
@@ -518,7 +530,7 @@ class GlobalNav extends Component {
         const { history, router, withNavProps } = this.props
 
         const subnav = this.chooseSubNavItems(nav, sport, primary)
-
+        console.log({nav,sport, primary});
         const pageTypeFromUrl = window.location.pathname.split('/')[3] || ''
 
         const isLivetracker_class = pageTypeFromUrl === 'games' ? 'isLivetracker' : ''
