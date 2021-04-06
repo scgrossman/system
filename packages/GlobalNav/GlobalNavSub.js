@@ -17,7 +17,7 @@ const GlobalNavSub = ({
     withNavProps,
     sport,
 }) => {
-    const subnav_avail_class = subnav && subnav.length !== 0 ? styles.active : ''
+    const subnav_avail_class = subnav && subnav.length !== 0 && sport != 'videos' ? styles.active : ''
 
     const urlLocationArr = window.location.pathname.split('/')
 
@@ -53,7 +53,7 @@ const GlobalNavSub = ({
             <div className={styles.inner_subnav_cont}>
                 <div id="subnav_scroller" className={styles.scroller}>
                     <ul>
-                        {subnav.map((subnav_item, i) => {
+                        {subnav && subnav.map((subnav_item, i) => {
                             const url_formatted = subnav_item.url && removeDomain(subnav_item.url)
 
                             const isHome = subnav_item.title.includes('Home');

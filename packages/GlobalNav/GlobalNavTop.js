@@ -87,11 +87,23 @@ class GlobalNavTop extends PureComponent {
                         />
                     </a>
 
+                    <div className={`${styles.janrain_mobile_icon}`}>
+                        <button
+                            id="captureSignInLink"
+                            className={`captureSignInLink capture_modal_open ${styles.janrain_mobile_icon_btn}`}
+                            style={{ display: 'block' }}
+                        >
+                            <div className={styles.janrain_mobile_profile_icon}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{fill:'none'}}> <defs> <clipPath id="a"> <circle class="a" cx="12" cy="12" r="12" transform="translate(-1854 840)" style={{fill:'none'}}/> </clipPath> </defs> <g transform="translate(1866 -828)" clip-path="url(#a)"> <g class="c" stroke-width="1.5px" transform="translate(-1854 855)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> <g class="c" stroke-width="1.5px" transform="translate(-1847 844)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="5" cy="5" r="5" style={{stroke:'none'}}/> <circle class="a" cx="5" cy="5" r="4.25" style={{fill:'none'}}/> </g> <g class="c" stroke-width="1.5px"transform="translate(-1854 840)" style={{fill:'none',stroke:'#fff'}}> <circle class="d" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="a" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> </g> <path class="a" d="M0 0h48v48H0z"/> </svg>
+                            </div>
+                        </button>
+                    </div>
+
                     <div className={styles.livetracker_text}>Live Tracker</div>
 
-                    <div className={styles.video_text}>
+                    {/* <div className={styles.video_text}>
                         <a href="https://www.sportsnet.ca/videos/">Video</a>
-                    </div>
+                    </div> */}
 
                     <div id="sponsor_00" className={styles.snSponsorAd} />
 
@@ -105,6 +117,8 @@ class GlobalNavTop extends PureComponent {
                                         this.state.open_desktop_nav_item === left_item.ID
                                     const hasChildMenu =
                                         left_item.child_menu && left_item.child_menu.length !== 0
+                                    const hasTeamsData =
+                                        left_item.teams_data && left_item.teams_data.length !== 0
                                     const isMore = left_item.title === 'More'
 
                                     return (
@@ -130,81 +144,120 @@ class GlobalNavTop extends PureComponent {
                                                 )}
                                             </div>
                                             {hasChildMenu && (
-                                                <ul
-                                                    id={`desktop_nav_link_menu_${left_item.ID}`}
-                                                    className={styles.desktop_nav_link_menu}
-                                                >
-                                                    {left_item.child_menu.map(left_child_item => {
-                                                        const url_formatted_child =
-                                                            left_child_item.url &&
-                                                            removeDomain(left_child_item.url)
+                                                <div className={styles.desktop_nav_link_menu_container}>
+                                                    <ul
+                                                        id={`desktop_nav_link_menu_${left_item.ID}`}
+                                                        className={styles.desktop_nav_link_menu}
+                                                    >
+                                                        <img className={styles.desktop_nav_link_menu_logo} src={left_item.logo} />
+                                                        <div className={styles.desktop_nav_link_menu_left}>
+                                                        {left_item.child_menu.map(left_child_item => {
+                                                            const url_formatted_child =
+                                                                left_child_item.url &&
+                                                                removeDomain(left_child_item.url)
 
-                                                        let modalType = ''
-                                                        if (left_child_item.title === 'Teams') {
-                                                            modalType = 'teams'
-                                                        } else if (
-                                                            left_child_item.title === 'Tables'
-                                                        ) {
-                                                            modalType = 'leagues'
-                                                        }
+                                                            let modalType = ''
+                                                            if (left_child_item.title === 'Teams') {
+                                                                modalType = 'teams'
+                                                            } else if (
+                                                                left_child_item.title === 'Tables'
+                                                            ) {
+                                                                modalType = 'leagues'
+                                                            }
 
-                                                        const doReactPage = isReactUrl(
-                                                            url_formatted_child
-                                                        )
-                                                        const proper_url = getReactWpUrl(
-                                                            url_formatted_child,
-                                                            doReactPage
-                                                        )
+                                                            const doReactPage = isReactUrl(
+                                                                url_formatted_child
+                                                            )
+                                                            const proper_url = getReactWpUrl(
+                                                                url_formatted_child,
+                                                                doReactPage
+                                                            )
 
-                                                        return (
-                                                            <li
-                                                                className={styles.desktop_nav_link_menu_item}
-                                                                key={left_child_item.ID}
-                                                            >
-                                                                {!modalType && (
-                                                                    <LinkComponent
-                                                                        className={styles.desktop_nav_link_menu_item_link}
-                                                                        withNavProps={withNavProps}
-                                                                        url={proper_url}
-                                                                        singlePageNavigation={doReactPage}
-                                                                        isNavLink
-                                                                        router={router}
-                                                                        withNavProps={withNavProps}
-                                                                        onClick={() => {
-                                                                            if (doReactPage) {
-                                                                                modalMenuClose()
+                                                            return (
+                                                                <li
+                                                                    className={styles.desktop_nav_link_menu_item}
+                                                                    key={left_child_item.ID}
+                                                                >
+                                                                    {!modalType && (
+                                                                        <LinkComponent
+                                                                            className={styles.desktop_nav_link_menu_item_link}
+                                                                            withNavProps={withNavProps}
+                                                                            url={proper_url}
+                                                                            singlePageNavigation={doReactPage}
+                                                                            isNavLink
+                                                                            router={router}
+                                                                            withNavProps={withNavProps}
+                                                                            onClick={() => {
+                                                                                if (doReactPage) {
+                                                                                    modalMenuClose()
+                                                                                    this.closeDesktopNavLinkNavigation()
+                                                                                }
+                                                                            }}
+                                                                        >
+                                                                            {left_child_item.title}
+                                                                        </LinkComponent>
+                                                                    )}
+                                                                    {modalType && (
+                                                                        <div
+                                                                            className={styles.desktop_nav_link_menu_item_link}
+                                                                            onClick={() => {
+                                                                                modalMenuToggle(
+                                                                                    modalType,
+                                                                                    left_item.title.toLowerCase()
+                                                                                )
                                                                                 this.closeDesktopNavLinkNavigation()
-                                                                            }
-                                                                        }}
-                                                                    >
-                                                                        {left_child_item.title}
-                                                                    </LinkComponent>
-                                                                )}
-                                                                {modalType && (
-                                                                    <div
-                                                                        className={styles.desktop_nav_link_menu_item_link}
-                                                                        onClick={() => {
-                                                                            modalMenuToggle(
-                                                                                modalType,
-                                                                                left_item.title.toLowerCase()
-                                                                            )
-                                                                            this.closeDesktopNavLinkNavigation()
-                                                                        }}
-                                                                    >
-                                                                        {left_child_item.title}
-                                                                    </div>
-                                                                )}
-                                                            </li>
-                                                        )
-                                                    })}
-                                                </ul>
+                                                                            }}
+                                                                        >
+                                                                            {left_child_item.title}
+                                                                        </div>
+                                                                    )}
+                                                                </li>
+                                                            )
+                                                        })}
+                                                        </div>
+                                                        <div className={styles.desktop_nav_link_menu_right}>
+                                                        {hasTeamsData && (
+                                                            <div className={styles.desktop_nav_teams_panel}>
+                                                                {Object.keys(left_item.teams_data).map(conference => {
+                                                                    return (
+                                                                        <div>
+                                                                            <div className={styles.desktop_nav_teams_panel_conference_name}>{conference}</div>
+                                                                            <div className={styles.desktop_nav_teams_panel_conference}>
+                                                                                {Object.keys(left_item.teams_data[conference]).map(division => {
+                                                                                    return (
+                                                                                        <div className={styles.desktop_nav_teams_panel_column}>
+                                                                                            <div className={styles.desktop_nav_teams_panel_division_title}>{division}</div>
+                                                                                            {left_item.teams_data[conference][division].map(team => {
+                                                                                                return (
+                                                                                                    <div>
+                                                                                                        <a href={`/${team.league}/teams/${team.team_slug}`}>
+                                                                                                            <div className={styles.desktop_nav_teams_panel_item_link}>
+                                                                                                                <img className={styles.desktop_nav_teams_panel_item_team_logo} src={team.team_image_url}/>
+                                                                                                                <div className={styles.desktop_nav_teams_panel_item_team_name}>{team.team_name}</div>
+                                                                                                            </div>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                )
+                                                                                            })}
+                                                                                        </div>
+                                                                                    )
+                                                                                })}
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </div>
+                                                        )}
+                                                        </div>
+                                                    </ul>
+                                                </div>
                                             )}
                                         </li>
                                     )
                                 })}
                         </ul>
 
-                        <ul className={styles.desktop_nav_link_list}>
+                        <ul className={`${styles.desktop_nav_link_list} ${styles.right}`}>
                             {Object.keys(nav).length !== 0 &&
                                 nav.right.map(right_item => {
                                     if (right_item.title === 'Watch Live') return ''
@@ -283,28 +336,40 @@ class GlobalNavTop extends PureComponent {
                                         </li>
                                     )
                                 })}
-                            <li className={styles.desktop_nav_link_item}>
+                            <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
+                                <a href="https://now.sportsnet.ca/">
+                                    <div className={styles.desktop_nav_link_item_link}>LIVE</div>
+                                </a>
+                            </li>
+                            <li className={`${styles.desktop_nav_link_item} ${styles.search_btn}`}>
                                 <div className={styles.desktop_nav_link_item_link}>
                                     <div className="global-nav-search">
-                                        <svg className="search-icon light">
-                                            <use
-                                                href={`${process.env.SN_URL}/wp-content/themes/sportsnet-nhl/images/combined-icons.svg#search`}
-                                            />
+                                        <svg className="search-icon light" xmlns="http://www.w3.org/2000/svg" viewBox="10 10 22 22">
+                                            <path class="a" d="M0 0h48v48H0z" style={{fill:'none'}}/>
+                                            <path class="a" d="M12 12h24v24H12z" style={{fill:'none'}}/>
+                                            <g class="b" transform="translate(13 13)" style={{fill:'none',stroke:'#fff'}}>
+                                                <circle cx="8" cy="8" r="8"/>
+                                                <circle class="a" cx="8" cy="8" r="7" style={{fill:'none'}}/>
+                                            </g>
+                                            <path class="b" d="M26 26l8 8" style={{fill:'none',stroke:'#fff'}}/>
                                         </svg>
                                     </div>
                                 </div>
                             </li>
-                            <li className={styles.desktop_nav_link_item}>
+                            <li className={`${styles.desktop_nav_link_item} ${styles.janrain_btn}`}>
                                 <div
                                     id="ump-user-account-links"
                                     className="ump-user-account-links mobile-signin-register pull-right hidden-xs"
+                                    style={{top:'auto',right:'auto'}}
                                 >
                                     <button
                                         id="captureSignInLink"
                                         className="captureSignInLink capture_modal_open"
-                                        style={{ display: 'none' }}
+                                        style={{ display: 'block' }}
                                     >
-                                        Sign In
+                                        <div className={styles.janrain_profile_icon}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{fill:'none'}}> <defs> <clipPath id="x"> <circle class="x" cx="12" cy="12" r="12" transform="translate(-1854 840)" style={{fill:'none'}}/> </clipPath> </defs> <g transform="translate(1866 -828)" clip-path="url(#a)"> <g class="y" stroke-width="1.5px" transform="translate(-1854 855)" style={{fill:'none',stroke:'#fff'}}> <circle class="z" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="x" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> <g class="y" stroke-width="1.5px" transform="translate(-1847 844)" style={{fill:'none',stroke:'#fff'}}> <circle class="z" cx="5" cy="5" r="5" style={{stroke:'none'}}/> <circle class="x" cx="5" cy="5" r="4.25" style={{fill:'none'}}/> </g> <g class="y" stroke-width="1.5px"transform="translate(-1854 840)" style={{fill:'none',stroke:'#fff'}}> <circle class="z" cx="12" cy="12" r="12" style={{stroke:'none'}}/> <circle class="x" cx="12" cy="12" r="11.25" style={{fill:'none'}}/> </g> </g> <path class="x" d="M0 0h48v48H0z"/> </svg>
+                                        </div>
                                     </button>
 
                                     <div className="captureSubWrapper">
@@ -324,8 +389,7 @@ class GlobalNavTop extends PureComponent {
                                                         style={{ display: 'none' }}
                                                     >
                                                         <div
-                                                            className="profile-avatar-wrapper"
-                                                            style={{ border: 'none', background: '#ccc', width: '24px', height: '24px', borderRadius: '100%' }}
+                                                            className={styles.profile_avatar_wrapper}
                                                         >
                                                             {/*eslint-disable-next-line*/}
                                                             <img
@@ -365,11 +429,6 @@ class GlobalNavTop extends PureComponent {
 
                                     <p className="login-failed-note" style={{ display: 'none' }} />
                                 </div>
-                            </li>
-                            <li className={`${styles.desktop_nav_link_item} ${styles.watch_live}`}>
-                                <a href="https://now.sportsnet.ca/">
-                                    <div className={styles.desktop_nav_link_item_link}>Watch Live</div>
-                                </a>
                             </li>
                         </ul>
                     </div>
