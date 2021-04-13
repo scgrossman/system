@@ -288,6 +288,9 @@ class GlobalNav extends Component {
     }
 
     chooseSubNavItems = (nav, sport, primary) => {
+        const { ssg } = this.props;
+        const subNavcheck = ssg ? sport : primary;
+        // is ssg use sport
         let chosen_items = []
         // check if this is a sport or league page
         if (this.ancillarySports.indexOf(sport) !== -1) {
@@ -306,8 +309,8 @@ class GlobalNav extends Component {
             if (chosen_items.length === 0) {
                 chosen_items = this.getFromMoreMenu(fixed_sport, nav)
             }
-        } else if (this.acceptedMajorLeagues.hasOwnProperty(primary)) {
-            chosen_items = this.getFromMainLeftMenu(primary, nav)
+        } else if (this.acceptedMajorLeagues.hasOwnProperty(subNavcheck)) {
+            chosen_items = this.getFromMainLeftMenu(subNavcheck, nav)
         } else if ( primary == 'videos' ) {
             chosen_items = nav.videos
         }
@@ -532,7 +535,7 @@ class GlobalNav extends Component {
             sport
         } = this.state
 
-        const { history, router, withNavProps } = this.props
+        const { history, router, withNavProps, ssg } = this.props
 
         const subnav = this.chooseSubNavItems(nav, sport, primary)
         const pageTypeFromUrl = window.location.pathname.split('/')[3] || ''
